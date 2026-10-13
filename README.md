@@ -7,9 +7,9 @@ cookies or analytics. Light and dark follow the visitor's system; it works at ph
 | Path | What |
 |---|---|
 | `/` | Home: what SMS Apps makes, the app grid, contact |
-| `/focusdash/` | Focus Dash: what it does, how it works, features, early access |
-| `/focusdash/support/` | FAQ and contact — App Store Connect **Support URL** |
-| `/focusdash/privacy/` | Focus Dash privacy policy — App Store Connect **Privacy Policy URL** |
+| `/deskcockpit/` | Desk Cockpit: what it does, how it works, features, early access |
+| `/deskcockpit/support/` | FAQ and contact — App Store Connect **Support URL** |
+| `/deskcockpit/privacy/` | Desk Cockpit privacy policy — App Store Connect **Privacy Policy URL** |
 | `/privacy/` | Studio privacy: the website itself, links to each app's policy |
 
 EarlyWire keeps its own site (earlywire.app, from `Docs/site` in the EarlyWire project) and is
@@ -52,7 +52,7 @@ record and its Google sign-in screen still name that address.
 ## Adding an app
 
 Add a card to the grid in `index.html`, a folder `/<app>/` with `index.html`, `support/` and
-`privacy/` (copy Focus Dash's as a starting point), its icon in `assets/icons/` (square,
+`privacy/` (copy Desk Cockpit's as a starting point), its icon in `assets/icons/` (square,
 full-bleed iOS icons get `class="icon-square"`; Mac icons already have their shape), and the
 new URLs in `sitemap.xml`.
 

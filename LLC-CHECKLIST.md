@@ -24,13 +24,13 @@ sitting. Each app also has its own list in its repository.
 ## Website (this repository)
 
 - [ ] Footers: `© 2026 SMS Apps` → `© 2026 SMS Apps, LLC` (every page).
-- [ ] Privacy pages: "Focus Dash, by SMS Apps" can stay; add the LLC's legal name and
+- [ ] Privacy pages: "Desk Cockpit, by SMS Apps" can stay; add the LLC's legal name and
       business address under Contact if required where you sell.
 - [ ] `index.html` JSON-LD: `"legalName": "SMS Apps, LLC"` on the Organization.
 
 ## Apps
 
-- [ ] **Focus Dash** (`~/Developer/FocusDash`): the `COMPANY_LEGAL_NAME` build setting →
+- [ ] **Desk Cockpit** (`~/Developer/FocusDash`): the `COMPANY_LEGAL_NAME` build setting →
       `SMS Apps, LLC`; see its `LLC-CHECKLIST.md`.
 - [ ] **EarlyWire** (`~/Developer/DailyBriefs`): `Docs/site` footers and the terms page,
       which should name the LLC as the party ("SMS Apps, LLC is not liable…").

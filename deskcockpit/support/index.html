@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk Cockpit support</title>
+<meta name="description" content="Help with Desk Cockpit for Mac: questions, backups, moved files, and how to reach SMS Apps.">
+<link rel="canonical" href="https://sms-apps.com/deskcockpit/support/">
+<link rel="icon" href="/assets/icons/deskcockpit.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SMS Apps</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/deskcockpit/">Desk Cockpit</a>
+      <a href="/deskcockpit/support/" aria-current="page">Support</a>
+      <a href="/deskcockpit/privacy/">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>Desk Cockpit support</h1>
+    <p>Write to <a href="mailto:support@sms-apps.com?subject=Desk%20Cockpit">support@sms-apps.com</a> with questions, problems or ideas. Please include your Desk Cockpit version (Settings → General → About) and your macOS version. A real person reads every message.</p>
+    <p class="muted">Desk Cockpit runs on macOS 26 or later. The app's own guide is under Settings → General → Open Help.</p>
+
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>How do I add files and links?</summary>
+      <p>Drag them onto a section from Finder or your browser, copy them and press ⌘V on the dashboard, or right-click a section and choose Add Link… (⌘L).</p>
+    </details>
+
+    <details>
+      <summary>A card disappeared. Where did it go?</summary>
+      <p>Cards you haven't opened for a while move to the collapsed Lost Focus section (after 10 days by default), and leave the dashboard after a further 35. Press ⌘K and type its name to find it. Drag it back out of Lost Focus, or right-click and use Move to Section, and its clock starts fresh. Pinned and glowing cards are never moved. Change the timing, or switch it off, in Settings → Lost Focus. If the launch tidy-up removed cards, the notice it shows has a Restore button.</p>
+    </details>
+
+    <details>
+      <summary>I removed or moved something by mistake.</summary>
+      <p>Edit → Undo (⌘Z) puts it back. Removing a card never touches the file or link behind it — only the card.</p>
+    </details>
+
+    <details>
+      <summary>A file was moved or renamed, and its card won't open.</summary>
+      <p>Open the card and Desk Cockpit offers to locate the file. Point at it once and the card is reconnected. macOS sometimes asks you to do this once for files Desk Cockpit hasn't opened before; that's macOS protecting your files.</p>
+    </details>
+
+    <details>
+      <summary>How do backups work, and how do I restore one?</summary>
+      <p>Desk Cockpit takes a dated backup on the first launch of each day and before any import. Settings → Backups shows how many are kept, has Back Up Now, and Show in Finder for the backup folder. To restore, use Settings → General → Import Dashboard and choose a backup or an exported file. Backups live inside the app, so also use Export Dashboard now and then to keep a copy somewhere lasting, such as Documents or iCloud Drive.</p>
+    </details>
+
+    <details>
+      <summary>How do I move my dashboard to another Mac?</summary>
+      <p>On the first Mac, Settings → General → Export Dashboard. On the other, install Desk Cockpit and use Import Dashboard. The two copies don't stay in sync afterwards. Files on the dashboard need to exist on the second Mac too; links work anywhere.</p>
+    </details>
+
+    <details>
+      <summary>How do I add the widget or the menu bar item?</summary>
+      <p>For the widget, right-click the desktop, choose Edit Widgets…, and search for Desk Cockpit. It shows your glowing and pinned cards; click one to open it. The menu bar item (the sparkles) is on by default and can be hidden in Settings → General → Menu Bar.</p>
+    </details>
+
+    <details>
+      <summary>Link cards don't show site icons or titles.</summary>
+      <p>Check Settings → Appearance → Previews is on. Some sites don't provide an icon, and a site that can't be reached is tried again the next time Desk Cockpit starts. File thumbnails appear on Medium and Large cards.</p>
+    </details>
+
+    <h2 id="remove">Removing Desk Cockpit and its data</h2>
+    <p>Moving Desk Cockpit to the Trash removes the app but not your dashboard, so it's still there if you reinstall. To remove the data too, quit Desk Cockpit, then in Finder choose Go → Go to Folder… and move these to the Trash:</p>
+    <ul>
+      <li><code>~/Library/Containers/com.smsapps.focusdash</code> — your dashboard, backups, previews and settings</li>
+      <li><code>~/Library/Containers/com.smsapps.focusdash.widget</code> — the widget's own storage</li>
+      <li><code>~/Library/Group Containers/8NF5KDHNAQ.com.smsapps.focusdash</code> — the widget's summary of your cards</li>
+    </ul>
+    <p class="muted">Export your dashboard first if you might want it back.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="/">SMS Apps</a>
+      <a href="/deskcockpit/">Desk Cockpit</a>
+      <a href="/deskcockpit/privacy/">Privacy</a>
+      <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>
+    </div>
+    <p>&copy; 2026 SMS Apps.</p>
+  </div>
+</footer>
+</body>
+</html>
