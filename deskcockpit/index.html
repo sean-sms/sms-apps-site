@@ -2,121 +2,261 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Desk Cockpit: your work at a glance, for Mac</title>
 <meta name="description" content="Desk Cockpit keeps the files and links you're working on in one place on your Mac, and quietly moves aside what you've stopped using. By SMS Apps.">
+<meta name="theme-color" content="#161a3d">
 <link rel="canonical" href="https://sms-apps.com/deskcockpit/">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SMS Apps">
 <meta property="og:title" content="Desk Cockpit for Mac">
-<meta property="og:description" content="A dashboard for the files and links you're working on right now.">
+<meta property="og:description" content="Everything you're working on, in reach and in sight. The rest quietly moves aside.">
 <meta property="og:url" content="https://sms-apps.com/deskcockpit/">
-<meta property="og:image" content="https://sms-apps.com/assets/icons/deskcockpit.png">
+<meta property="og:image" content="https://sms-apps.com/deskcockpit/media/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/assets/icons/deskcockpit-64.png">
 <link rel="apple-touch-icon" href="/assets/icons/deskcockpit-touch.png">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/deskcockpit/dc.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Desk Cockpit","applicationCategory":"ProductivityApplication","operatingSystem":"macOS 26 or later","url":"https://sms-apps.com/deskcockpit/","author":{"@type":"Organization","name":"SMS Apps","url":"https://sms-apps.com/"}}
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<header class="site-header">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="/">SMS Apps</a>
-    <nav class="nav" aria-label="Main">
-      <a href="/deskcockpit/" aria-current="page">Desk Cockpit</a>
-      <a href="/deskcockpit/support/">Support</a>
-      <a href="/deskcockpit/privacy/">Privacy</a>
-    </nav>
+    <a class="brand" href="#top"><img src="/assets/icons/deskcockpit-64.png" alt="" width="30" height="30"><span>Desk Cockpit</span></a>
+    <ul id="menu">
+      <li><a href="#week">Try it</a></li>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="menu-cta"><a class="btn amber" href="#get">Request early access</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="btn amber small nav-cta" href="#get">Request early access</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
+</nav>
+
+<!-- HERO: dusk falls as you scroll, and the cockpit lights up -->
+<header class="hero" id="top">
+ <div class="stage">
+  <div class="sky" aria-hidden="true">
+    <div class="sky-night"></div>
+    <svg class="stars" id="stars"></svg>
+    <div class="sun"></div>
+    <svg class="ridge far" viewBox="0 0 1440 220" preserveAspectRatio="none"><path d="M0 150 L110 90 L190 125 L320 40 L410 105 L500 70 L600 128 L700 52 L800 112 L900 66 L1010 120 L1120 34 L1220 98 L1330 72 L1440 118 V220 H0Z"/></svg>
+    <svg class="ridge near" viewBox="0 0 1440 220" preserveAspectRatio="none"><path d="M0 182 L140 120 L250 160 L390 98 L520 168 L640 132 L780 176 L920 116 L1060 166 L1190 136 L1320 172 L1440 144 V220 H0Z"/></svg>
+  </div>
+  <div class="wrap hero-copy">
+    <img class="hero-icon" src="/assets/icons/deskcockpit.png" alt="" width="132" height="132">
+    <p class="dateline">For Mac &middot; in testing</p>
+    <h1>Everything you're working on,<br><em>in reach and in sight.</em></h1>
+    <p class="lede">Desk Cockpit is a dashboard for the files and links that matter right now. They're one click away, they glow when they need you, and the ones you've stopped using quietly move aside.</p>
+    <div class="cta-row">
+      <a class="btn amber" href="#get">Request early access</a>
+      <a class="btn ghost" href="#watch">&#9654;&#xFE0E; Watch it work</a>
+    </div>
+    <p class="platforms"><span>macOS 26 or later</span><span>No account</span><span>No ads</span><span>No tracking</span></p>
+  </div>
+  <div class="wrap hero-shot">
+    <figure class="cockpit" id="cockpit">
+      <img src="/deskcockpit/media/board-dark.png" width="1800" height="1294" alt="The Desk Cockpit window: sections called This Week, Northwind Outfitters, Home &amp; Family, Learning and Lost Focus, each holding cards for files and links. Two cards glow amber.">
+      <span class="lamp" style="--x:22.56%;--y:16.67%"></span>
+      <span class="lamp" style="--x:22.56%;--y:45.68%"></span>
+    </figure>
+  </div>
+ </div>
 </header>
 
-<main>
-  <section class="hero dusk">
-    <div class="wrap">
-      <img class="app-icon" src="/assets/icons/deskcockpit.png" alt="Desk Cockpit icon" width="168" height="168">
-      <h1>Desk Cockpit</h1>
-      <p class="lede">Everything you're working on, in reach and in sight, like a cockpit for your desk. The files and links that matter are one click away, and the ones you've stopped using quietly move aside.</p>
-      <div class="buttons">
-        <a class="btn amber" href="mailto:support@sms-apps.com?subject=Desk%20Cockpit%20early%20access">Request early access</a>
-        <a class="btn" href="#how">How it works</a>
+<main id="main">
+
+<!-- FAST-FORWARD THE WEEK -->
+<section class="week" id="week">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="dateline">Try it &middot; Lost Focus</p>
+      <h2>Fast-forward the week.<br>Watch the board tidy itself.</h2>
+      <p class="lede">Drag the days forward. Cards you haven't opened in 10 days slip into Lost Focus. Glowing and pinned cards stay put. Click any card to open it, and it's back in play.</p>
+    </div>
+    <div class="ff reveal">
+      <div class="ff-controls">
+        <div class="ff-day" aria-live="polite"><b id="ffDay">Today</b><span id="ffDate">Tuesday, October 13</span></div>
+        <label class="visually-hidden" for="ffRange">Days from today</label>
+        <input type="range" id="ffRange" min="0" max="21" step="1" value="0">
+        <div class="ff-scale" aria-hidden="true"><span>Today</span><span>+1 week</span><span>+2 weeks</span><span>+3 weeks</span></div>
+        <button class="btn ghost small" type="button" id="ffReset">Start over</button>
       </div>
-      <p class="note">In testing now. For Mac, macOS 26 or later.</p>
+      <div class="board" id="ffBoard" aria-label="Example dashboard"></div>
+      <p class="fine">An example board. In the app, 10 days is the default, and you can change it, or switch Lost Focus off. Cards leave Lost Focus after a further 35 days.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="how">
-    <div class="wrap">
-      <h2>How it works</h2>
-      <p class="lede">Desk Cockpit doesn't manage your files. It helps you stay focused on them.</p>
-      <ol class="steps">
-        <li><b>Make a section</b>Projects, clients, this week — however you think about your work.</li>
-        <li><b>Add cards</b>Drag in files or links from Finder or your browser, paste them with <span class="kbd">⌘V</span>, or add a link by hand.</li>
-        <li><b>Open and arrange</b>Double-click to open, press Space to Quick Look, drag to reorder, right-click for everything else.</li>
-        <li><b>Let it tidy itself</b>Cards you haven't touched in a while move to Lost Focus, so the dashboard keeps showing what you're actually working on.</li>
-      </ol>
+<!-- COMMAND K -->
+<section class="palette-sec" id="find">
+  <div class="wrap palette-grid">
+    <div class="reveal">
+      <p class="dateline">Try it &middot; <span class="kbd">⌘K</span></p>
+      <h2>Type three letters.<br>Land on the card.</h2>
+      <p class="lede">Press <span class="kbd">⌘K</span> anywhere in Desk Cockpit and type a few letters of a card's name, in order. "nwp" finds Northwind Proposal. "lis" finds Lisbon. Then open it, show it on the board, or Quick Look it.</p>
+      <p class="fine">This box uses the same matching rules as the app: letters in order, with word starts and runs of letters ranked first.</p>
     </div>
-  </section>
+    <div class="palette reveal" role="search">
+      <div class="palette-field">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>
+        <label class="visually-hidden" for="pq">Find a card</label>
+        <input id="pq" type="text" placeholder="Find a card" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="pres" aria-autocomplete="list">
+        <span class="kbd">⌘K</span>
+      </div>
+      <ul class="palette-results" id="pres" role="listbox" aria-label="Matching cards"></ul>
+      <div class="palette-foot"><span>Return to open</span><span>⌘Return to show on the board</span><span>⌘Y Quick Look</span></div>
+      <div class="toast" id="ptoast" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <div class="wrap">
-      <h2>Made for staying on task</h2>
-      <div class="features">
-        <div class="feature">
-          <h3>Glow and pin</h3>
-          <p>Make the two or three things that matter today glow, and pin the ones that should always sit at the top.</p>
+<!-- THEATRE -->
+<section class="theatre" id="watch">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="dateline">Watch</p>
+      <h2>Real recordings. Real app.</h2>
+      <p class="lede">No mock-ups here. These are screen recordings of Desk Cockpit running on a Mac, with a made-up board.</p>
+    </div>
+    <div class="theatre-grid reveal">
+      <div class="tabs" role="tablist" aria-label="Recordings">
+        <button class="tab" role="tab" aria-selected="true" data-v="glow" data-cap="Right-click a card and choose Glow. It lifts out of the board, joins the Glowing list in the sidebar and the menu bar, and Lost Focus leaves it alone."><span class="n">1</span><b>Make it glow</b><small>Flag what matters today</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-v="cmdk" data-cap="Press ⌘K, type a few letters, and press ⌘Return to jump to the card on the board, or Return to open it."><span class="n">2</span><b>Find it with ⌘K</b><small>Five letters, one card</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-v="quicklook" data-cap="Quick Look a file without leaving the board. It counts as using the card, so it stays out of Lost Focus."><span class="n">3</span><b>Quick Look</b><small>Peek without opening</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-v="rescue" data-cap="A card you need again is in Lost Focus? Move it back to any section. Its clock starts over."><span class="n">4</span><b>Rescue from Lost Focus</b><small>Nothing is ever lost</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-v="addlink" data-cap="Press ⌘L, type a web address and an optional name. Desk Cockpit fetches the site's icon and page title for the card."><span class="n">5</span><b>Add a link</b><small>Or drag files in from Finder</small></button>
+      </div>
+      <div class="player">
+        <div class="mac">
+          <video id="tv" src="/deskcockpit/media/glow.mp4" poster="/deskcockpit/media/glow-poster.jpg" muted loop playsinline preload="metadata" aria-describedby="tcap"></video>
+          <button class="play" id="tplay" type="button" aria-label="Pause">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-pause" d="M6 4h3v12H6zM11 4h3v12h-3z"/><path class="i-play" d="M6 4l10 6-10 6z"/></svg>
+          </button>
         </div>
-        <div class="feature">
-          <h3>Lost Focus</h3>
-          <p>Untouched cards move to a collapsed Lost Focus section after 10 days, and leave after another 35. Pinned and glowing cards are never moved. The timing is yours to change, or switch off.</p>
-        </div>
-        <div class="feature">
-          <h3>Find anything with <span class="kbd">⌘K</span></h3>
-          <p>Type a few letters of a card's name to open it, show it on the board, or Quick Look it, wherever it is.</p>
-        </div>
-        <div class="feature">
-          <h3>Real previews</h3>
-          <p>Files show their thumbnails and links show their site's icon and page title, so you know what's behind a card at a glance.</p>
-        </div>
-        <div class="feature">
-          <h3>Menu bar and widget</h3>
-          <p>Glowing and pinned cards are a click away from the menu bar, and from a desktop widget in three sizes.</p>
-        </div>
-        <div class="feature">
-          <h3>Shortcuts</h3>
-          <p>Open a card, add a link, or list what's glowing with the Shortcuts app.</p>
-        </div>
-        <div class="feature">
-          <h3>Undo everything</h3>
-          <p>Removed, moved or sorted something by mistake? <span class="kbd">⌘Z</span> puts it back. Removing a card never touches the file or link behind it.</p>
-        </div>
-        <div class="feature">
-          <h3>Daily backups</h3>
-          <p>A dated backup on the first launch of each day, and before any import. Export a copy whenever you like.</p>
-        </div>
-        <div class="feature">
-          <h3>Fits your Mac</h3>
-          <p>Liquid Glass cards, light and dark, four card sizes from Tiny to Large, an optional sidebar, keyboard navigation and VoiceOver labels.</p>
-        </div>
+        <p class="caption" id="tcap">Right-click a card and choose Glow. It lifts out of the board, joins the Glowing list in the sidebar and the menu bar, and Lost Focus leaves it alone.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="wrap">
-      <h2>Private by design</h2>
-      <p class="muted">Your dashboard stays on your Mac. There's no account, no analytics and no tracking. The only time Desk Cockpit goes online is to fetch a linked site's icon and title, and that can be switched off. <a href="/deskcockpit/privacy/">Read the privacy policy</a>.</p>
+<!-- LOOKS -->
+<section class="looks" id="looks">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="dateline">At home on your Mac</p>
+      <h2>Light, dark, or navy at night.</h2>
+      <p class="lede">Liquid Glass cards, four card sizes from Tiny to Large, colour tags, and an optional sidebar that lists what's glowing, what's pinned and every section.</p>
     </div>
-  </section>
+    <div class="seg reveal" role="radiogroup" aria-label="Appearance">
+      <button role="radio" aria-checked="false" data-look="light">Light</button>
+      <button role="radio" aria-checked="true" data-look="dark">Dark</button>
+      <button role="radio" aria-checked="false" data-look="navy">Navy</button>
+    </div>
+    <figure class="looks-shot reveal" id="looksShot">
+      <img class="on" data-look="dark" src="/deskcockpit/media/board-dark.png" width="1800" height="1294" alt="Desk Cockpit in Dark appearance" loading="lazy">
+      <img data-look="light" src="/deskcockpit/media/board-light.png" width="1800" height="1294" alt="Desk Cockpit in Light appearance" loading="lazy">
+      <img data-look="navy" src="/deskcockpit/media/board-navy.png" width="1800" height="1294" alt="Desk Cockpit with the navy background in Dark appearance" loading="lazy">
+    </figure>
+  </div>
+</section>
 
-  <section>
-    <div class="wrap">
-      <h2>Questions?</h2>
-      <p class="muted">See <a href="/deskcockpit/support/">Support</a>, or write to <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>.</p>
+<!-- FEATURES -->
+<section class="features-sec" id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="dateline">Features</p>
+      <h2>Made for staying on task.</h2>
     </div>
-  </section>
+    <div class="features">
+      <div class="feature reveal"><span class="ico">✦</span><h3>Glow and pin</h3><p>Make the two or three things that matter today glow, and pin the ones that should always be there.</p></div>
+      <div class="feature reveal"><span class="ico">◐</span><h3>Lost Focus</h3><p>Untouched cards move to a Lost Focus section after 10 days and leave after another 35. Pinned and glowing cards never move. Change the timing, or switch it off.</p></div>
+      <div class="feature reveal"><span class="ico">⌘</span><h3>Find anything with ⌘K</h3><p>Type a few letters to open a card, show it on the board, or Quick Look it, wherever it is.</p></div>
+      <div class="feature reveal"><span class="ico">▣</span><h3>Real previews</h3><p>Files show what they are and links show their site's icon and page title, so you know what's behind a card at a glance.</p></div>
+      <div class="feature reveal"><span class="ico">☰</span><h3>Menu bar and widget</h3><p>Glowing and pinned cards are a click away from the menu bar, and from a desktop widget in three sizes.</p></div>
+      <div class="feature reveal"><span class="ico">⚙︎</span><h3>Shortcuts</h3><p>Open a card, add a link, or list what's glowing with the Shortcuts app.</p></div>
+      <div class="feature reveal"><span class="ico">↺</span><h3>Undo everything</h3><p>Removed, moved or sorted something by mistake? <span class="kbd">⌘Z</span> puts it back. Removing a card never touches the file or link behind it.</p></div>
+      <div class="feature reveal"><span class="ico">⛁</span><h3>Daily backups</h3><p>A dated backup on the first launch of each day, and before any import. Export a copy whenever you like.</p></div>
+      <div class="feature reveal"><span class="ico">⌨︎</span><h3>Keyboard and VoiceOver</h3><p>Move around the board with the keyboard, press Space to Quick Look, and hear clear VoiceOver labels on every card.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IDEAS -->
+<section class="ideas" id="ideas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="dateline">Ideas</p>
+      <h2>A cockpit for whatever you're flying.</h2>
+      <p class="lede">Sections are yours to name. A few ways people might set up a board:</p>
+    </div>
+    <div class="idea-grid">
+      <div class="idea reveal"><h3>The freelancer</h3><ul><li><i style="--c:#ff9f0a"></i>This Week</li><li><i style="--c:#0a84ff"></i>One section per client</li><li><i style="--c:#30d158"></i>Invoices &amp; contracts</li></ul></div>
+      <div class="idea reveal"><h3>The student</h3><ul><li><i style="--c:#ff453a"></i>Due soon</li><li><i style="--c:#bf5af2"></i>One section per class</li><li><i style="--c:#64d2ff"></i>Reading list</li></ul></div>
+      <div class="idea reveal"><h3>The family organiser</h3><ul><li><i style="--c:#ff375f"></i>Trips</li><li><i style="--c:#30d158"></i>House projects</li><li><i style="--c:#ffd60a"></i>School &amp; sports</li></ul></div>
+      <div class="idea reveal"><h3>The developer</h3><ul><li><i style="--c:#ff9f0a"></i>On call</li><li><i style="--c:#0a84ff"></i>Repos &amp; pull requests</li><li><i style="--c:#bf5af2"></i>Docs</li></ul></div>
+    </div>
+    <p class="fine">Examples only.</p>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="privacy" id="privacy">
+  <div class="wrap privacy-grid">
+    <div class="reveal">
+      <p class="dateline">Privacy</p>
+      <h2>Your board stays on your Mac.</h2>
+      <p class="lede">There's no account, no analytics and no tracking. The only time Desk Cockpit goes online is to fetch a linked site's icon and title, and you can switch that off.</p>
+      <p><a class="link" href="/deskcockpit/privacy/">Read the privacy policy &rarr;</a></p>
+    </div>
+    <ul class="checks reveal">
+      <li><b>No account</b><span>Open it and start. Nothing to sign up for.</span></li>
+      <li><b>No analytics</b><span>Desk Cockpit doesn't count what you do.</span></li>
+      <li><b>Files stay where they are</b><span>Cards point to your files; they never move, copy or upload them.</span></li>
+      <li><b>Previews you control</b><span>Turn off link previews and Desk Cockpit never contacts the sites on your board.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap narrow">
+    <div class="sec-head reveal"><p class="dateline">FAQ</p><h2>Questions, answered.</h2></div>
+    <div class="reveal">
+      <details><summary>Does Desk Cockpit move or change my files?</summary><p>No. A card is a shortcut to a file or link. Removing a card, or a card moving to Lost Focus, never touches the file itself.</p></details>
+      <details><summary>What happens to a card in Lost Focus?</summary><p>It sits in a collapsed Lost Focus section at the bottom of the board. Open it, Quick Look it or move it to a section and it's back in play. If you leave it alone for a further 35 days, the card is removed. The file behind it is never affected.</p></details>
+      <details><summary>Can I change the timing, or turn Lost Focus off?</summary><p>Yes. Settings lets you choose how many days of rest send a card to Lost Focus, how long it stays there, or switch it off completely.</p></details>
+      <details><summary>Which Macs does it run on?</summary><p>Any Mac running macOS 26 or later.</p></details>
+      <details><summary>Is my board backed up?</summary><p>Desk Cockpit takes a dated backup the first time you open it each day, and before any import. You can export a copy, or restore one, from Settings.</p></details>
+      <details><summary>How do I get it?</summary><p>Desk Cockpit is in testing now. <a href="#get">Request early access</a> and we'll let you know when it's ready.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- GET -->
+<section class="get" id="get">
+  <div class="wrap reveal">
+    <img src="/assets/icons/deskcockpit.png" alt="" width="120" height="120">
+    <h2>Take the controls.</h2>
+    <p class="lede">Desk Cockpit is in testing now. Ask for early access and we'll send it over when it's ready.</p>
+    <a class="btn amber" href="mailto:support@sms-apps.com?subject=Desk%20Cockpit%20early%20access&amp;body=Please%20let%20me%20know%20when%20Desk%20Cockpit%20is%20ready.">Request early access</a>
+    <p class="fine">Questions first? See <a href="/deskcockpit/support/">Support</a> or write to <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>.</p>
+  </div>
+</section>
+
 </main>
 
-<footer class="site-footer">
+<footer class="footer">
   <div class="wrap">
     <div class="links">
       <a href="/">SMS Apps</a>
@@ -124,8 +264,9 @@
       <a href="/deskcockpit/privacy/">Privacy</a>
       <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>
     </div>
-    <p>&copy; 2026 SMS Apps. Desk Cockpit is made by SMS Apps.</p>
+    <p>&copy; 2026 SMS Apps. Desk Cockpit is made by SMS Apps. Boards and names shown are made up.</p>
   </div>
 </footer>
+<script src="/deskcockpit/dc.js" defer></script>
 </body>
 </html>
