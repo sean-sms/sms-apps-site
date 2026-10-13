@@ -198,3 +198,8 @@ details p { margin: 10px 0 0; color: var(--muted); }
   .poster-card:hover, .poster-card:hover .phone, .poster-card:hover .window { transform: translateX(-50%); }
   .poster-card:hover { transform: none; }
 }
+
+/* Support hub */
+.doc-narrow { max-width: 760px; }
+.tidy { padding-left: 22px; margin: 0 0 14px; }
+.tidy li { margin-bottom: 8px; }
