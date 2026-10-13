@@ -161,11 +161,12 @@ section { padding: clamp(72px, 10vw, 130px) 0; position: relative; }
 .ff-day span { color: var(--muted); font-size: 14px; }
 .ff-controls input { grid-column: 2; width: 100%; accent-color: var(--amber); height: 2rem; }
 .ff-scale { grid-column: 2; display: flex; justify-content: space-between; font: 600 11px/1 var(--mono); color: var(--faint); letter-spacing: .08em; text-transform: uppercase; margin-top: -6px; }
-#ffReset { grid-column: 3; grid-row: 1 / span 2; }
+#ffPlay { grid-column: 3; grid-row: 1 / span 2; min-width: 112px; justify-content: center; }
+.ff-controls input { touch-action: none; cursor: pointer; }
 @media (max-width: 760px) {
   .ff-controls { grid-template-columns: 1fr auto; }
   .ff-controls input, .ff-scale { grid-column: 1 / -1; }
-  #ffReset { grid-column: 2; grid-row: 1; }
+  #ffPlay { grid-column: 2; grid-row: 1; }
 }
 
 .board { display: grid; gap: 18px; }

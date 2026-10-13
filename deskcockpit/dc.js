@@ -1,4 +1,4 @@
-/* Desk Cockpit — showcase page behaviour. No libraries, no network calls. */
+/* Desk Cockpit — showcase page behavior. No libraries, no network calls. */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -170,9 +170,48 @@
       $('#ffDay').textContent = day === 0 ? 'Today' : '+' + day + (day === 1 ? ' day' : ' days');
       $('#ffDate').textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
     }
-    range.addEventListener('input', function () { day = +range.value; render(); });
-    $('#ffReset').addEventListener('click', function () { reset(); render(); });
+    var playBtn = $('#ffPlay'), timer = null, MAX = +range.max;
+    function setPlayLabel(mode) {
+      playBtn.querySelector('.ico').textContent = mode === 'pause' ? '❚❚' : mode === 'replay' ? '↺' : '▶︎';
+      playBtn.querySelector('.lbl').textContent = mode === 'pause' ? 'Pause' : mode === 'replay' ? 'Replay' : 'Play';
+      playBtn.setAttribute('aria-label', mode === 'pause' ? 'Pause' : mode === 'replay' ? 'Play the three weeks again' : 'Play the next three weeks');
+    }
+    function stop(atEnd) { clearInterval(timer); timer = null; setPlayLabel(atEnd ? 'replay' : 'play'); }
+    function play() {
+      if (day >= MAX) { reset(); render(); }
+      setPlayLabel('pause');
+      timer = setInterval(function () {
+        day = Math.min(MAX, day + 1); range.value = day; render();
+        if (day >= MAX) stop(true);
+      }, reduce ? 120 : 420);
+    }
+    playBtn.addEventListener('click', function () { if (timer) stop(false); else play(); });
+    function setDay(d) { day = d; range.value = d; render(); if (timer) stop(false); else setPlayLabel(day >= MAX ? 'replay' : 'play'); }
+    range.addEventListener('input', function () { setDay(+range.value); });
+    // iPhone Safari only moves a slider by its knob; let a tap or drag anywhere on the track set the day.
+    function fromPointer(e) {
+      var b = range.getBoundingClientRect();
+      var k = Math.max(0, Math.min(1, (e.clientX - b.left) / b.width));
+      var d = Math.round(k * MAX);
+      if (d !== day) setDay(d);
+    }
+    range.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return; // desktop sliders already behave
+      e.preventDefault(); fromPointer(e);
+      try { range.setPointerCapture(e.pointerId); } catch (err) { /* capture is a nicety */ }
+      function move(ev) { fromPointer(ev); }
+      function up() { range.removeEventListener('pointermove', move); range.removeEventListener('pointerup', up); range.removeEventListener('pointercancel', up); }
+      range.addEventListener('pointermove', move); range.addEventListener('pointerup', up); range.addEventListener('pointercancel', up);
+    });
     reset(); build(); render();
+    // Play once by itself the first time the board comes into view.
+    if (!reduce && 'IntersectionObserver' in window) {
+      var played = false;
+      var fio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting && !played) { played = true; fio.disconnect(); setTimeout(function () { if (!timer && day === 0) play(); }, 700); }
+      }, { threshold: 1, rootMargin: '0px 0px -25% 0px' });
+      fio.observe($('.ff-controls'));
+    }
   }
 
   /* ---- ⌘K palette, with the app's matching rules ---- */
