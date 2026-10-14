@@ -83,8 +83,11 @@
   if (board) {
     var day = 0, state, nodes = {};
     var start = new Date(2026, 9, 13);
+    // Resets the cards in place: each card on the board keeps a link to its own
+    // state object, so they must not be replaced.
     function reset() {
-      state = CARDS.map(function (c, i) { return { id: i, c: c, opened: -c.ago, glow: !!c.glow, pin: !!c.pin, lost: false, lostAt: null }; });
+      if (!state) state = CARDS.map(function (c, i) { return { id: i, c: c }; });
+      state.forEach(function (s) { s.opened = -s.c.ago; s.glow = !!s.c.glow; s.pin = !!s.c.pin; s.lost = false; s.lostAt = null; });
       day = 0; range.value = 0;
     }
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -169,32 +172,43 @@
       var d = new Date(start); d.setDate(d.getDate() + day);
       $('#ffDay').textContent = day === 0 ? 'Today' : '+' + day + (day === 1 ? ' day' : ' days');
       $('#ffDate').textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      syncControls();
     }
+    // `day` is the one source of truth: the knob and the button are redrawn from it
+    // on every render, so they can never drift apart.
     var playBtn = $('#ffPlay'), timer = null, MAX = +range.max;
-    function setPlayLabel(mode) {
+    function syncControls() {
+      if (+range.value !== day) range.value = day;
+      var mode = timer ? 'pause' : day >= MAX ? 'replay' : 'play';
       playBtn.querySelector('.ico').textContent = mode === 'pause' ? '❚❚' : mode === 'replay' ? '↺' : '▶︎';
       playBtn.querySelector('.lbl').textContent = mode === 'pause' ? 'Pause' : mode === 'replay' ? 'Replay' : 'Play';
       playBtn.setAttribute('aria-label', mode === 'pause' ? 'Pause' : mode === 'replay' ? 'Play the three weeks again' : 'Play the next three weeks');
     }
-    function stop(atEnd) { clearInterval(timer); timer = null; setPlayLabel(atEnd ? 'replay' : 'play'); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } syncControls(); }
     function play() {
-      if (day >= MAX) { reset(); render(); }
-      setPlayLabel('pause');
+      stop();
+      if (day >= MAX) reset();
       timer = setInterval(function () {
-        day = Math.min(MAX, day + 1); range.value = day; render();
-        if (day >= MAX) stop(true);
+        day = Math.min(MAX, day + 1);
+        if (day >= MAX) { clearInterval(timer); timer = null; }
+        render();
       }, reduce ? 120 : 420);
+      render();
     }
-    playBtn.addEventListener('click', function () { if (timer) stop(false); else play(); });
-    function setDay(d) { day = d; range.value = d; render(); if (timer) stop(false); else setPlayLabel(day >= MAX ? 'replay' : 'play'); }
+    playBtn.addEventListener('click', function () { if (timer) stop(); else play(); });
+    function setDay(d) {
+      d = Math.max(0, Math.min(MAX, Math.round(d)));
+      if (timer) { clearInterval(timer); timer = null; }
+      day = d; render();
+    }
     range.addEventListener('input', function () { setDay(+range.value); });
-    // iPhone Safari only moves a slider by its knob; let a tap or drag anywhere on the track set the day.
+    // iPhone and iPad Safari only move a slider by its knob; let a tap or drag anywhere
+    // on the track set the day, and keep Safari's own handling out of the way.
     function fromPointer(e) {
       var b = range.getBoundingClientRect();
-      var k = Math.max(0, Math.min(1, (e.clientX - b.left) / b.width));
-      var d = Math.round(k * MAX);
-      if (d !== day) setDay(d);
+      setDay(Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)) * MAX);
     }
+    range.addEventListener('touchstart', function (e) { e.preventDefault(); }, { passive: false });
     range.addEventListener('pointerdown', function (e) {
       if (e.pointerType === 'mouse') return; // desktop sliders already behave
       e.preventDefault(); fromPointer(e);
@@ -203,13 +217,16 @@
       function up() { range.removeEventListener('pointermove', move); range.removeEventListener('pointerup', up); range.removeEventListener('pointercancel', up); }
       range.addEventListener('pointermove', move); range.addEventListener('pointerup', up); range.addEventListener('pointercancel', up);
     });
+    // Safari can bring a page back from its cache, or restore the old slider position,
+    // without telling the page: redraw from `day` when that happens.
+    window.addEventListener('pageshow', function () { stop(); render(); });
     reset(); build(); render();
-    // Play once by itself the first time the board comes into view.
+    // Play once by itself the first time the controls come into view.
     if (!reduce && 'IntersectionObserver' in window) {
       var played = false;
       var fio = new IntersectionObserver(function (es) {
         if (es[0].isIntersecting && !played) { played = true; fio.disconnect(); setTimeout(function () { if (!timer && day === 0) play(); }, 700); }
-      }, { threshold: 1, rootMargin: '0px 0px -25% 0px' });
+      }, { threshold: 0.6 });
       fio.observe($('.ff-controls'));
     }
   }
