@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+._*
+# Windows
+Thumbs.db
+desktop.ini
+# Editors and Obsidian working files
+*.swp
+*~
+*.tmp
+.vscode/
+.idea/
+.obsidian/workspace*.json
+.obsidian/cache
+.trash/
+# Never commit secrets
+.env
+*.token
