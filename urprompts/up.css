@@ -182,3 +182,15 @@ figcaption{font-size:14px;color:var(--faint);margin-top:12px}
   .js .reveal{opacity:1;transform:none;transition:none}
   .feature{transition:none}
 }
+
+/* ---- The tour video -------------------------------------------------
+   Sits directly under the hero. preload="none" keeps the 6MB off the
+   wire until someone actually presses play. */
+#tour{padding-top:clamp(40px,6vw,72px)}
+.tour-frame{
+  border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  background:#05060f; box-shadow:0 24px 60px rgba(0,0,0,.45);
+}
+.tour-frame video{display:block;width:100%;height:auto}
+.tour-frame video::cue{font-size:.8em;background:rgba(5,6,15,.82)}
+#tour .fine{text-align:center}

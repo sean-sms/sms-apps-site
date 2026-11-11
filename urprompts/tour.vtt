@@ -1,0 +1,112 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.743
+Welcome to UrPrompts. This short tour shows how to find, copy and use your saved prompts.
+
+00:00:06.443 --> 00:00:08.827
+Section one. The main window.
+
+00:00:09.527 --> 00:00:18.684
+The sidebar on the left groups your prompts. You have Favorites, All Prompts, Recently Used and Most Used, followed by every tag with a count.
+
+00:00:19.384 --> 00:00:27.482
+The middle column lists the prompts in the group you picked, with each trigger code and its tags. Type in the Filter box to narrow the list.
+
+00:00:28.182 --> 00:00:36.568
+Click a prompt to open it on the right. You can change the title, trigger, purpose, tags or text, and your edits are saved for you.
+
+00:00:37.268 --> 00:00:39.571
+Section two. Find a prompt.
+
+00:00:40.271 --> 00:00:48.633
+Press Command K, or click the magnifier, to open search. Before you type, it shows your recent and most used prompts.
+
+00:00:49.333 --> 00:00:57.677
+Type a word. Search looks at titles, triggers, tags and the prompt text. It highlights the matches and forgives small typos.
+
+00:00:58.377 --> 00:01:07.581
+To narrow the results, use operators, such as tag, colon, opportunity, or fav, colon, true. You can combine them.
+
+00:01:08.281 --> 00:01:11.841
+Section three. Copy a prompt and fill in the blanks.
+
+00:01:12.541 --> 00:01:16.206
+Use the up and down arrows to choose a prompt in the search list.
+
+00:01:16.906 --> 00:01:23.634
+Then press Return to copy it. A prompt with nothing to fill in, like this one, goes straight to your clipboard.
+
+00:01:24.334 --> 00:01:36.323
+Other prompts have fill-in blanks: a word inside curly braces, like client, or audience. They let one prompt do the work of ten, because the only part you retype is the part that changes.
+
+00:01:37.023 --> 00:01:48.122
+Copy a prompt like that and a short form opens, with one field for each blank and a live preview beside it. Type your answers, press Return, and the finished prompt is on your clipboard.
+
+00:01:48.822 --> 00:01:55.078
+UrPrompts remembers what you typed last time, so the values you use again come back already filled in.
+
+00:01:55.778 --> 00:01:58.626
+Section four. Use a prompt in Claude.
+
+00:01:59.326 --> 00:02:05.337
+Example one. The prompt is on your clipboard, so switch to Claude and click the message box.
+
+00:02:06.037 --> 00:02:11.403
+Press Command V. The whole prompt appears. Add anything else you need below it, and send.
+
+00:02:12.103 --> 00:02:19.635
+Example two. With Espanso installed, type a semicolon and a prompt's trigger code, such as semicolon boomer.
+
+00:02:20.335 --> 00:02:24.985
+Espanso replaces the code with the full prompt, right in the message box.
+
+00:02:25.685 --> 00:02:36.593
+Example three. Press Option Command K in any app, including Claude, to open UrPrompts search. Pick a prompt, press Return, then paste with Command V.
+
+00:02:37.293 --> 00:02:40.699
+Section five. Create, tag and organize.
+
+00:02:41.399 --> 00:02:48.438
+Press Command N, or the plus button, for a new prompt. Give it a title and a short trigger code you will remember.
+
+00:02:49.138 --> 00:02:57.429
+To tag it, click Add tag, type a word, and press Return or a comma. No hash sign is needed. The x on a tag removes it.
+
+00:02:58.129 --> 00:03:09.863
+Write the prompt on the left and check the preview on the right. Type a word in curly braces, like client, to make a fill-in blank. UrPrompts asks you for it every time you copy this prompt.
+
+00:03:10.563 --> 00:03:19.716
+Click the star, or press Shift Command F, to mark a favorite. Duplicate, or Command D, makes a variant that links back to the original.
+
+00:03:20.416 --> 00:03:23.311
+Section six. Sync between machines.
+
+00:03:24.011 --> 00:03:32.083
+Press Shift Command S, or the Sync button, to back up to your private GitHub repository. You set this up once in Settings.
+
+00:03:32.783 --> 00:03:38.909
+If the same prompt was changed on two machines, both versions are kept, so nothing is overwritten.
+
+00:03:39.609 --> 00:03:42.701
+Section seven. Share a prompt with someone.
+
+00:03:43.401 --> 00:03:47.916
+Press Option Command S, or click Share, to pick one prompt or several.
+
+00:03:48.616 --> 00:03:56.803
+Copy for Chat puts the prompt, and a line saying what it does, on your clipboard, ready to paste into Teams, Slack or an email.
+
+00:03:57.503 --> 00:04:03.788
+Copy as Email gives you the longer version, with the fill-in blanks explained and a link to download the app.
+
+00:04:04.488 --> 00:04:14.269
+Save File writes an UrPrompts file. Anyone else running this app can double-click it, and the prompt arrives with its tags, trigger code and blanks intact.
+
+00:04:14.969 --> 00:04:22.173
+What never leaves your Mac: how often you have used a prompt, your favorites, and whatever you last typed into its blanks.
+
+00:04:22.873 --> 00:04:25.629
+Section eight. Shortcuts to remember.
+
+00:04:26.329 --> 00:04:42.958
+Command K searches. Option Command K searches from any app. Return copies. Command N makes a new prompt. Command D duplicates. Shift Command F stars a favorite. Option Command S shares. Shift Command S syncs. That is the tour.
