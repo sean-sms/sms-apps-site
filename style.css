@@ -206,3 +206,46 @@ details p { margin: 10px 0 0; color: var(--muted); }
 .doc-narrow { max-width: 760px; }
 .tidy { padding-left: 22px; margin: 0 0 14px; }
 .tidy li { margin-bottom: 8px; }
+
+/* ---- App card skies -------------------------------------------------
+   Each app owns its sky. The mountain ridge (.art::after) and the warm
+   sun (.sun) are shared defaults, so without these overrides every card
+   reads as the same sunset whatever its gradient says. Desk Cockpit
+   keeps both; it is the one that is actually a dusk landscape. */
+
+/* EarlyWire: dawn. Cool night above, gold at the horizon, no purple
+   anywhere, so it cannot be confused with Desk Cockpit's dusk. */
+.poster-card.sunrise .art {
+  background: linear-gradient(180deg, #040d29 0%, #0b2a66 24%, #1f5f9f 46%,
+                              #9fb6d2 60%, #dba05a 78%, #f7c978 90%, #ffeab4 100%);
+}
+.poster-card.sunrise .sun {
+  width: 54%;
+  bottom: 5%;
+  background: radial-gradient(circle, #fffdf3 0%, #ffeaa9 28%, #ffc257 50%,
+                              rgba(255, 168, 66, 0) 70%);
+}
+
+/* UrPrompts: the app icon, not a landscape. Near-black, a violet bloom
+   and drifting specks. Mountains and the warm sun are removed. */
+.poster-card.nightfall .art {
+  background:
+    radial-gradient(circle 1.6px at 18% 22%, rgba(255, 255, 255, .55), transparent),
+    radial-gradient(circle 1.2px at 72% 14%, rgba(190, 210, 255, .5), transparent),
+    radial-gradient(circle 1.8px at 86% 42%, rgba(255, 255, 255, .4), transparent),
+    radial-gradient(circle 1.3px at 32% 62%, rgba(190, 210, 255, .42), transparent),
+    radial-gradient(circle 1.5px at 60% 76%, rgba(255, 255, 255, .34), transparent),
+    radial-gradient(circle 1.1px at 8% 54%, rgba(190, 210, 255, .36), transparent),
+    radial-gradient(circle 1.4px at 46% 10%, rgba(255, 255, 255, .3), transparent),
+    radial-gradient(circle 1.2px at 92% 70%, rgba(190, 210, 255, .32), transparent),
+    linear-gradient(180deg, #04050e 0%, #0b0a20 32%, #140f3a 58%, #1d144e 82%, #24195c 100%);
+}
+.poster-card.nightfall .art::after { content: none; }
+.poster-card.nightfall .sun {
+  width: 70%;
+  bottom: 6%;
+  background: radial-gradient(circle, rgba(173, 146, 255, .5) 0%,
+                              rgba(118, 96, 226, .3) 36%,
+                              rgba(70, 50, 160, 0) 68%);
+}
+.poster-card.nightfall .more { color: #9b86ff; }
