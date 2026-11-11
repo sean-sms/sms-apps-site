@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://sms-apps.com/urprompts/sync/">
 <link rel="icon" type="image/png" href="/assets/icons/urprompts.png">
 <link rel="apple-touch-icon" href="/assets/icons/urprompts.png">
-<link rel="stylesheet" href="/style.css?v=2">
+<link rel="stylesheet" href="/style.css?v=3">
 </head>
 <body>
 <header class="site-header">
@@ -43,16 +43,36 @@
       <li>
         <b>Make a private repository</b>
         On GitHub, click <b>+</b> at the top right, then <b>New repository</b>. Name it <code>urprompts</code>. Choose <b>Private</b> &mdash; this matters, and UrPrompts refuses to sync with a public one. Leave every "Initialize this repository" box unticked, so it starts empty. Click <b>Create repository</b>.
+        <figure class="shot">
+          <img src="img/01-new-repo.png" width="785" height="770" loading="lazy" alt="GitHub's Create a new repository form, with the name filled in, Private chosen, and the three initialize options switched off">
+          <figcaption>Private, and all three &ldquo;Add&hellip;&rdquo; options left off, so the repository starts empty.</figcaption>
+        </figure>
       </li>
       <li>
         <b>Create a token</b>
         A token is how the app proves it's allowed in. On GitHub: your avatar &rarr; <b>Settings</b> &rarr; <b>Developer settings</b> (very bottom of the left sidebar) &rarr; <b>Personal access tokens</b> &rarr; <b>Fine-grained tokens</b> &rarr; <b>Generate new token</b>. Fill it in like this:
+        <figure class="shot">
+          <img src="img/02-developer-settings.png" width="312" height="645" loading="lazy" alt="The bottom of GitHub's settings sidebar, with Developer settings highlighted below the Archives group">
+          <figcaption><b>Developer settings</b> is the very last item in the sidebar, below Archives. Scroll right to the bottom.</figcaption>
+        </figure>
         <ul>
           <li><b>Token name:</b> anything you'll recognise later, such as "UrPrompts on my MacBook".</li>
           <li><b>Expiration:</b> your choice. When it runs out, sync stops until you make a new one &mdash; see below.</li>
           <li><b>Repository access:</b> <b>Only select repositories</b>, then pick your <code>urprompts</code> repository.</li>
           <li><b>Permissions</b> &rarr; <b>Repository permissions</b> &rarr; <b>Contents</b>: set to <b>Read and write</b>. That's the only one you need to change.</li>
         </ul>
+        <figure class="shot">
+          <img src="img/03-new-token.png" width="840" height="453" loading="lazy" alt="The new fine-grained personal access token form showing the token name and expiration fields">
+          <figcaption>Name it something you'll recognise on another machine. The expiry is up to you.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/04-repository-access.png" width="787" height="884" loading="lazy" alt="Repository access set to Only select repositories, with the urprompts repository ticked">
+          <figcaption>Pick <b>Only select repositories</b> and tick just <code>urprompts</code>. Your own list will look different.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/05-contents-permission.png" width="787" height="604" loading="lazy" alt="The Contents permission being set to Read and write, with Metadata listed as required">
+          <figcaption><b>Contents: Read and write</b> is the only permission to change. Metadata is added for you.</figcaption>
+        </figure>
         Click <b>Generate token</b>, then copy it. GitHub shows it once and never again.
       </li>
       <li>

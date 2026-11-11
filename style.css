@@ -254,3 +254,12 @@ details p { margin: 10px 0 0; color: var(--muted); }
                               rgba(70, 50, 160, 0) 68%);
 }
 .poster-card.nightfall .more { color: #9b86ff; }
+
+/* Screenshots inside a step. They are pictures of a UI, so they keep their
+   own width rather than stretching to the column. */
+.shot { margin: 16px 0 4px; }
+.shot img {
+  display: block; max-width: 100%; height: auto;
+  border: 1px solid var(--line); border-radius: 10px;
+}
+.shot figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
