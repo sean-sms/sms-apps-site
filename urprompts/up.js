@@ -10,12 +10,6 @@
     var el = document.getElementById(id);
     if (el) el.href = url;
   });
-  // Keep the page honest in both states: while DOWNLOAD_URL is still an
-  // in-page anchor there is no build, and the install section says so.
-  if (url.charAt(0) !== "#") {
-    var note = document.getElementById("no-build");
-    if (note && note.parentNode) note.parentNode.removeChild(note);
-  }
 
   // --- Nav goes solid once you leave the hero --------------------------
   var nav = document.getElementById("nav");
