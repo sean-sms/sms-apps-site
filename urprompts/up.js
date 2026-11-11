@@ -1,4 +1,4 @@
-/* Prompt Library page behaviour: sticky nav, reveal-on-scroll, and the
+/* UrPrompts page behaviour: sticky nav, reveal-on-scroll, and the
    ⌘K palette demo. Same conventions as deskcockpit/dc.js — the page is
    readable and complete with scripts off. */
 (function () {
