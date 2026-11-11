@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set up sync | UrPrompts</title>
+<meta name="description" content="Step-by-step: connect UrPrompts to a private GitHub repository so your prompts follow you between Macs. No Git knowledge needed, nothing to pay.">
+<link rel="canonical" href="https://sms-apps.com/urprompts/sync/">
+<link rel="icon" type="image/png" href="/assets/icons/urprompts.png">
+<link rel="apple-touch-icon" href="/assets/icons/urprompts.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SMS Apps</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/urprompts/">UrPrompts</a>
+      <a href="/urprompts/sync/" aria-current="page">Set up sync</a>
+      <a href="/support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>Set up sync</h1>
+    <p class="lede">Sync keeps the same prompts on every Mac you use. It runs on a private GitHub repository, which is free, and you never have to touch Git yourself &mdash; the app does that part.</p>
+    <p class="updated">About ten minutes, once. UrPrompts works perfectly well without it; set this up only if you use more than one Mac, or you want an off-machine copy of your prompts.</p>
+
+    <h2>Before you start</h2>
+    <ul>
+      <li>A GitHub account. Free, and the free plan includes unlimited private repositories.</li>
+      <li>UrPrompts installed, with a library folder already chosen.</li>
+    </ul>
+
+    <h2>The six steps</h2>
+    <ol class="steps">
+      <li>
+        <b>Create a GitHub account</b>
+        Go to <a href="https://github.com/signup">github.com/signup</a> and sign up. Skip this if you already have an account.
+      </li>
+      <li>
+        <b>Make a private repository</b>
+        On GitHub, click <b>+</b> at the top right, then <b>New repository</b>. Name it <code>urprompts</code>. Choose <b>Private</b> &mdash; this matters, and UrPrompts refuses to sync with a public one. Leave every "Initialize this repository" box unticked, so it starts empty. Click <b>Create repository</b>.
+      </li>
+      <li>
+        <b>Create a token</b>
+        A token is how the app proves it's allowed in. On GitHub: your avatar &rarr; <b>Settings</b> &rarr; <b>Developer settings</b> (very bottom of the left sidebar) &rarr; <b>Personal access tokens</b> &rarr; <b>Fine-grained tokens</b> &rarr; <b>Generate new token</b>. Fill it in like this:
+        <ul>
+          <li><b>Token name:</b> anything you'll recognise later, such as "UrPrompts on my MacBook".</li>
+          <li><b>Expiration:</b> your choice. When it runs out, sync stops until you make a new one &mdash; see below.</li>
+          <li><b>Repository access:</b> <b>Only select repositories</b>, then pick your <code>urprompts</code> repository.</li>
+          <li><b>Permissions</b> &rarr; <b>Repository permissions</b> &rarr; <b>Contents</b>: set to <b>Read and write</b>. That's the only one you need to change.</li>
+        </ul>
+        Click <b>Generate token</b>, then copy it. GitHub shows it once and never again.
+      </li>
+      <li>
+        <b>Paste it into UrPrompts</b>
+        Open UrPrompts and press <span class="kbd">&#8984;,</span> for Settings, then the <b>GitHub sync</b> section. Put the repository's web address in <b>Repository</b> &mdash; it looks like <code>https://github.com/yourname/urprompts</code>. Leave <b>Branch</b> as <code>main</code>. Paste the token into <b>Access token</b> and click <b>Save</b>.
+      </li>
+      <li>
+        <b>Click Sync Now</b>
+        Your prompts travel up to the repository. The status line next to the button tells you what happened.
+      </li>
+      <li>
+        <b>Set up your second Mac</b>
+        Install UrPrompts there and choose an <b>empty</b> folder for its library. Enter the same Repository and Branch, generate a second token for that machine, and click <b>Sync Now</b>. Your prompts arrive.
+      </li>
+    </ol>
+    <p class="note">Give each Mac its own name in Settings &rarr; Library &rarr; This device's name. It's how you tell the two apart if the same prompt is ever edited in both places.</p>
+
+    <h2>Keep it running by itself</h2>
+    <p>In the same Settings section, switch on <b>Sync automatically</b> and choose how often. Most people leave it at a few minutes and forget it exists.</p>
+
+    <h2>When the token expires</h2>
+    <p>Sync stops and the status line says so. Nothing is lost &mdash; your prompts are on your Mac, and your changes are saved locally in the meantime. Make a new token exactly as in step 3, paste it into <b>Access token</b>, click <b>Save</b>, then <b>Sync Now</b>.</p>
+
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>Do I need to understand Git?</summary>
+      <p>No. The app runs Git for you. The repository is useful to know about for one reason only: it's a complete history, so an older version of any prompt can be recovered later.</p>
+    </details>
+
+    <details>
+      <summary>Does this cost anything?</summary>
+      <p>No. Private repositories are free on GitHub's free plan, and your prompts are small text files.</p>
+    </details>
+
+    <details>
+      <summary>What happens if I edit the same prompt on both Macs?</summary>
+      <p>Neither version is thrown away and the two are never blended into something you didn't write. The machine doing the sync keeps its own version, and the other machine's version arrives beside it as a flagged copy. A Conflicts section appears in the sidebar, and you choose: keep this one, keep the other, or keep both as separate prompts.</p>
+    </details>
+
+    <details>
+      <summary>Can I use a repository I already have?</summary>
+      <p>Yes, as long as it's private. An empty one is simplest. If it already has files in it, they'll be mixed in with your prompt library, so a fresh repository is usually the cleaner choice.</p>
+    </details>
+
+    <details>
+      <summary>Where does the token live? Is it safe?</summary>
+      <p>It goes into the macOS Keychain and nowhere else. It is never written into your library folder, into Git's configuration, or into a command the app runs. Before syncing, the app asks GitHub whether the repository is private, and refuses to sync if it isn't, or if it can't get an answer.</p>
+    </details>
+
+    <details>
+      <summary>Can I get at my prompts on a PC?</summary>
+      <p>UrPrompts is Mac-only today. The repository is just Markdown files, so you can read and edit them anywhere &mdash; on github.com, or in any text editor after cloning. Let the Mac do the syncing, though: plain <code>git pull</code> elsewhere uses Git's own merging, which can blend two versions of a prompt into text neither of you wrote.</p>
+    </details>
+
+    <details>
+      <summary>Something went wrong and I want to start over.</summary>
+      <p>Delete the repository on GitHub, make a fresh private one, and point UrPrompts at it. Your prompts live in your library folder on your Mac, so nothing is lost by doing this.</p>
+    </details>
+
+    <h2>Still stuck?</h2>
+    <p>Write to <a href="mailto:support@sms-apps.com?subject=UrPrompts%20sync">support@sms-apps.com</a> and say which step you're on and what the status line says. A real person reads every message.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="/">SMS Apps</a>
+      <a href="/urprompts/">UrPrompts</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>
+    </div>
+    <p>&copy; 2026 SMS Apps LLC.</p>
+  </div>
+</footer>
+</body>
+</html>
