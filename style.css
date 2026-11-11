@@ -263,3 +263,10 @@ details p { margin: 10px 0 0; color: var(--muted); }
   border: 1px solid var(--line); border-radius: 10px;
 }
 .shot figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
+/* A callout for the one thing in a procedure you cannot undo. The border
+   carries the weight, but the wording has to work without the colour too. */
+.callout { border-radius: 10px; padding: 14px 16px; margin: 18px 0 6px; }
+.callout.warn { border: 2px solid #e5484d; background: rgba(229, 72, 77, .08); }
+.callout b { color: var(--text); }
+.steps .callout { margin-left: 0; }
