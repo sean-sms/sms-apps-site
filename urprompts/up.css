@@ -4,8 +4,8 @@
    just before dawn. The amber call-to-action is shared house furniture. */
 
 :root{
-  --ink:#0a1020;
-  --ink-2:#121a33;
+  --ink:#07060f;
+  --ink-2:#140f33;
   --panel:rgba(255,255,255,.055);
   --panel-2:rgba(255,255,255,.085);
   --line:rgba(255,255,255,.12);
@@ -70,16 +70,13 @@ em{font-style:normal}
 
 /* Hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;padding-bottom:clamp(40px,8vw,90px)}
-.sky{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#060a18 0%,#0d1530 24%,#1b2f5e 46%,#38497e 64%,#6c6c9c 80%,#b98a86 93%,#e7a97f 100%)}
+.sky{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#04050e 0%,#0b0a20 30%,#140f3a 58%,#1b1248 80%,#241a5c 100%)}
 .stars{position:absolute;inset:0;z-index:-1;opacity:.55}
 .stars circle{fill:#fff}
-.glow{position:absolute;left:50%;bottom:4%;width:min(40vw,460px);aspect-ratio:1;border-radius:50%;transform:translateX(-50%);z-index:-1;
-  background:radial-gradient(circle,#fff3dc 0%,#ffd9a0 32%,#f0a86a 56%,rgba(230,140,80,0) 72%);opacity:.85}
-.ridge{position:absolute;left:0;right:0;bottom:0;width:100%;z-index:-1}
-.ridge.far{height:min(30%,22vw)}
-.ridge.far path{fill:#4a4f86;opacity:.8}
-.ridge.near{height:min(21%,15vw)}
-.ridge.near path{fill:#1b2446}
+.glow{position:absolute;left:50%;bottom:2%;width:min(56vw,640px);aspect-ratio:1;border-radius:50%;transform:translateX(-50%);z-index:-1;
+  background:radial-gradient(circle,rgba(185,160,255,.6) 0%,rgba(128,104,236,.36) 34%,rgba(70,50,160,0) 70%);opacity:1}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28%;z-index:-1;
+  pointer-events:none;background:linear-gradient(180deg,transparent,var(--ink))}
 .hero-copy{position:relative;z-index:2;text-align:center;padding-top:clamp(56px,9vh,96px)}
 .hero-icon{width:clamp(84px,11vw,120px);margin:0 auto 20px;filter:drop-shadow(0 14px 28px rgba(6,10,28,.55))}
 .hero h1{font-size:clamp(34px,min(5.8vw,8vh),70px);text-shadow:0 4px 30px rgba(8,12,40,.4)}
@@ -157,9 +154,9 @@ figure{margin:0}
 figcaption{font-size:14px;color:var(--faint);margin-top:12px}
 
 /* Get it */
-.get{background:linear-gradient(180deg,#1b2446 0%,#3a3f74 55%,#8a7a9e 100%);overflow:hidden}
-.get::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:110px;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='%23a07fa8' fill-opacity='.85' d='M0 90 L90 40 L150 70 L260 10 L330 60 L400 35 L480 75 L560 20 L640 65 L720 30 L800 70 L900 15 L980 60 L1060 35 L1200 80 V140 H0Z'/%3E%3Cpath fill='%231b2446' d='M0 115 L120 75 L200 100 L320 60 L430 105 L520 80 L640 110 L760 70 L870 105 L980 85 L1090 110 L1200 90 V140 H0Z'/%3E%3C/svg%3E") bottom/100% 100% no-repeat}
+.get{background:linear-gradient(180deg,#0b0a20 0%,#1b1248 48%,#2e2170 100%);overflow:hidden}
+.get::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;
+  pointer-events:none;background:linear-gradient(180deg,transparent,#120e28)}
 .get .wrap{position:relative;z-index:1;padding-bottom:90px}
 .get img,.get svg.icon{margin:0 auto 22px;filter:drop-shadow(0 16px 30px rgba(6,8,36,.5))}
 .get .lede{margin:0 auto 26px;color:rgba(255,255,255,.92)}
@@ -167,7 +164,7 @@ figcaption{font-size:14px;color:var(--faint);margin-top:12px}
 .get .fine a{color:#fff;text-decoration:underline}
 
 /* Footer */
-.footer{background:#141a33;color:rgba(255,255,255,.7);font-size:14px;padding:26px 0 40px}
+.footer{background:#120e28;color:rgba(255,255,255,.7);font-size:14px;padding:26px 0 40px}
 .footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:8px}
 .footer a{color:rgba(255,255,255,.82)}
 .footer p{margin:0}
