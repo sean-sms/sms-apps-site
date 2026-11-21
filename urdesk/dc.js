@@ -13,23 +13,8 @@
   });
   $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }); });
 
-  /* ---- hero: dusk falls as you scroll, and the desk lights up ---- */
+  /* ---- hero: the desk tidies as you scroll, and the lamp comes on ---- */
   var hero = $('#top');
-  var stars = $('#stars');
-  (function makeStars() {
-    var ns = 'http://www.w3.org/2000/svg', seed = 7;
-    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-    stars.setAttribute('viewBox', '0 0 1000 600');
-    stars.setAttribute('preserveAspectRatio', 'none');
-    for (var i = 0; i < 140; i++) {
-      var c = document.createElementNS(ns, 'circle');
-      c.setAttribute('cx', (rnd() * 1000).toFixed(1));
-      c.setAttribute('cy', (Math.pow(rnd(), 1.6) * 600).toFixed(1));
-      c.setAttribute('r', (rnd() * 1.3 + .35).toFixed(2));
-      c.setAttribute('opacity', (rnd() * .7 + .3).toFixed(2));
-      stars.appendChild(c);
-    }
-  })();
   var ticking = false;
   function onScroll() {
     nav.classList.toggle('solid', window.scrollY > 40);
