@@ -137,7 +137,7 @@ details p { margin: 10px 0 0; color: var(--muted); }
   section { padding: 44px 0; }
 }
 
-/* Desk Cockpit: a dusk sky over mountains, matching the app icon. */
+/* UrDesk: a dusk sky over mountains, matching the app icon. */
 .hero.dusk {
   position: relative; overflow: hidden; color: #fff;
   background: linear-gradient(180deg, #232a5c 0%, #3f4590 34%, #8a6fa6 62%, #d79a8e 82%, #f3b36d 100%);
@@ -215,11 +215,11 @@ details p { margin: 10px 0 0; color: var(--muted); }
 /* ---- App card skies -------------------------------------------------
    Each app owns its sky. The mountain ridge (.art::after) and the warm
    sun (.sun) are shared defaults, so without these overrides every card
-   reads as the same sunset whatever its gradient says. Desk Cockpit
+   reads as the same sunset whatever its gradient says. UrDesk
    keeps both; it is the one that is actually a dusk landscape. */
 
 /* EarlyWire: dawn. Cool night above, gold at the horizon, no purple
-   anywhere, so it cannot be confused with Desk Cockpit's dusk. */
+   anywhere, so it cannot be confused with UrDesk's dusk. */
 .poster-card.sunrise .art {
   background: linear-gradient(180deg, #040d29 0%, #0b2a66 24%, #1f5f9f 46%,
                               #9fb6d2 60%, #dba05a 78%, #f7c978 90%, #ffeab4 100%);

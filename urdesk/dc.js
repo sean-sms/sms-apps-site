@@ -1,4 +1,4 @@
-/* Desk Cockpit — showcase page behavior. No libraries, no network calls. */
+/* UrDesk — showcase page behavior. No libraries, no network calls. */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -329,8 +329,8 @@
       t.addEventListener('click', function () {
         $$('.tab').forEach(function (o) { o.setAttribute('aria-selected', o === t); });
         var v = t.dataset.v;
-        tv.poster = '/deskcockpit/media/' + v + '-poster.jpg';
-        tv.src = '/deskcockpit/media/' + v + '.mp4';
+        tv.poster = '/urdesk/media/' + v + '-poster.jpg';
+        tv.src = '/urdesk/media/' + v + '.mp4';
         tcap.textContent = t.dataset.cap;
         userPaused = false;
         if (visible || !('IntersectionObserver' in window)) play();
