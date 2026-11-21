@@ -13,7 +13,7 @@
   });
   $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }); });
 
-  /* ---- hero: dusk falls as you scroll, and the cockpit lights up ---- */
+  /* ---- hero: dusk falls as you scroll, and the desk lights up ---- */
   var hero = $('#top');
   var stars = $('#stars');
   (function makeStars() {
