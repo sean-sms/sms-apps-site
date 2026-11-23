@@ -178,11 +178,11 @@ details p { margin: 10px 0 0; color: var(--muted); }
   background: linear-gradient(180deg, #0d1530 0%, #1b2f5e 26%, #38497e 48%, #5a6293 66%, #8a7a9e 80%, #c0908a 92%, #e7a97f 100%);
 }
 .poster-card .phone {
-  position: absolute; z-index: 1; left: 50%; top: 14%; width: 30%; border-radius: 18px; transform: translateX(-50%);
+  position: absolute; z-index: 1; left: 50%; top: 14%; width: 30%; height: auto; border-radius: 18px; transform: translateX(-50%);
   box-shadow: 0 0 0 5px #111, 0 22px 44px rgba(0, 0, 0, .45); transition: transform .35s ease;
 }
 .poster-card .window {
-  position: absolute; z-index: 1; left: 50%; top: 13%; width: 86%; transform: translateX(-50%);
+  position: absolute; z-index: 1; left: 50%; top: 13%; width: 86%; height: auto; transform: translateX(-50%);
   filter: drop-shadow(0 18px 30px rgba(10, 8, 40, .45)); transition: transform .35s ease;
 }
 .poster-card:hover .phone, .poster-card:hover .window { transform: translateX(-50%) translateY(-6px); }
