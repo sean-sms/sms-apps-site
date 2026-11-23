@@ -311,9 +311,7 @@ details p { margin: 12px 0 0; color: var(--muted); }
 
 /* Get */
 .get { text-align: center; overflow: hidden;
-  background: linear-gradient(180deg, var(--ink) 0%, #2b3170 45%, #8a6fa6 78%, #e3a08c 100%); }
-.get::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 110px; pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='%23a07fa8' fill-opacity='.85' d='M0 90 L90 40 L150 70 L260 10 L330 60 L400 35 L480 75 L560 20 L640 65 L720 30 L800 70 L900 15 L980 60 L1060 35 L1200 80 V140 H0Z'/%3E%3Cpath fill='%233a2d5c' d='M0 115 L120 75 L200 100 L320 60 L430 105 L520 80 L640 110 L760 70 L870 105 L980 85 L1090 110 L1200 90 V140 H0Z'/%3E%3C/svg%3E") bottom / 100% 100% no-repeat; }
+  background: linear-gradient(180deg, var(--ink) 0%, #2b3170 40%, #8a6fa6 68%, #6b5590 86%, #3a2d5c 100%); }
 .get .wrap { position: relative; z-index: 1; padding-bottom: 80px; }
 .get img { margin: 0 auto 22px; filter: drop-shadow(0 16px 30px rgba(10, 8, 40, .5)); }
 .get .lede { margin: 0 auto 26px; color: rgba(255, 255, 255, .9); }
