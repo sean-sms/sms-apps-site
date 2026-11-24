@@ -22,8 +22,54 @@
     var span = Math.max(1, hero.offsetHeight - window.innerHeight);
     var p = Math.max(0, Math.min(1, window.scrollY / span));
     hero.style.setProperty('--p', p.toFixed(4));
+    tidy(p);
     ticking = false;
   }
+
+  /* Each scrap flies from where it lies to the card it becomes on the screen,
+     following the screen as it rises, shrinks to that card's size, and fades into it. */
+  var shotImg = $('#deskshot img'), stage = $('.stage');
+  var scraps = $$('.clutter .scrap').map(function (el) {
+    var to = (el.getAttribute('data-to') || '').split(',');
+    return { el: el, r: parseFloat(el.style.getPropertyValue('--r')) || 0,
+             o: parseFloat(el.style.getPropertyValue('--o')) || 1,
+             tx: parseFloat(to[0]) / 100, ty: parseFloat(to[1]) / 100 };
+  });
+  var shot = $('#deskshot'), copy = $('.hero-copy'), checks = $('.hero-copy .platforms');
+  function measure() {   // where each scrap lies, untransformed (offset* ignore transforms)
+    // The screen starts just under the checklist, showing as much of it as fits, up to 40%.
+    var h = shotImg.offsetWidth * 1294 / 1800, vh = window.innerHeight;
+    var below = copy.offsetTop + checks.offsetTop + checks.offsetHeight + 22;
+    shot.style.setProperty('--start', Math.round(Math.max(below, vh - h * .4)) + 'px');
+    scraps.forEach(function (s) {
+      s.cx = s.el.offsetLeft + s.el.offsetWidth / 2;
+      s.cy = s.el.offsetTop + s.el.offsetHeight / 2;
+      s.w = s.el.offsetWidth;
+    });
+  }
+  function tidy(p) {
+    if (!scraps.length) return;
+    var t = Math.max(0, Math.min(1, (p - .04) / .86));
+    var q = t * t * (3 - 2 * t);                       // ease in and out
+    var fade = q < .72 ? 1 : Math.max(0, 1 - (q - .72) / .28);
+    var box = shotImg.getBoundingClientRect(), base = stage.getBoundingClientRect();
+    scraps.forEach(function (s) {
+      if (!s.el.offsetWidth) return;                     // hidden on small screens
+      var dx = 0, dy = 0, k = 1 - q * .5;
+      if (!isNaN(s.tx)) {
+        dx = (box.left - base.left + s.tx * box.width - s.cx) * q;
+        dy = (box.top - base.top + s.ty * box.height - s.cy) * q;
+        k = 1 + (Math.min(1, Math.max(.25, box.width * .132 / s.w)) - 1) * q;
+      } else {
+        dy = 40 * q;                                     // the mug just slides away
+      }
+      s.el.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) rotate(' +
+        (s.r * (1 - q)).toFixed(2) + 'deg) scale(' + k.toFixed(3) + ')';
+      s.el.style.opacity = (s.o + (1 - s.o) * Math.min(1, q * 3)) * fade;
+    });
+  }
+  measure();
+  window.addEventListener('resize', function () { measure(); onScroll(); });
   if (reduce) hero.style.setProperty('--p', '1');
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
@@ -121,7 +167,7 @@
       });
       state.forEach(function (s) { nodes[s.id] = cardNode(s); });
     }
-    function render() {
+    function render(still) {
       sweep();
       // FLIP: remember where every card was, move them, then animate from there.
       var before = {};
@@ -145,11 +191,11 @@
         if (!counts[t] && !empty) c.appendChild(el('div', 'empty', t === LOST ? 'Nothing here. Everything is in use.' : 'Empty'));
         if (counts[t] && empty) empty.remove();
       });
-      if (!reduce && before) {
+      if (!reduce && !still && before) {
         state.forEach(function (s) {
           var n = nodes[s.id], a = before[s.id], b = n.getBoundingClientRect();
           if (!a.width) return;
-          var dx = a.left - b.left, dy = a.top - b.top;
+          var dx = (a.left - b.left) / scale, dy = (a.top - b.top) / scale;   // the panel may be scaled to fit
           if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
           n.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 520, easing: 'cubic-bezier(.2,.7,.2,1)' });
         });
@@ -158,10 +204,14 @@
       $('#ffDay').textContent = day === 0 ? 'Today' : '+' + day + (day === 1 ? ' day' : ' days');
       $('#ffDate').textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
       syncControls();
+      rail.style.setProperty('--d', (day / MAX).toFixed(4));
+      railBtns.forEach(function (b) { b.classList.toggle('on', day >= +b.getAttribute('data-day')); });
     }
     // `day` is the one source of truth: the knob and the button are redrawn from it
     // on every render, so they can never drift apart.
     var playBtn = $('#ffPlay'), timer = null, MAX = +range.max;
+    var rail = $('#ffRail'), railBtns = $$('#ffRail button'), scale = 1;
+    railBtns.forEach(function (b) { b.style.setProperty('--at', +b.getAttribute('data-day') / MAX); });
     function syncControls() {
       if (+range.value !== day) range.value = day;
       var mode = timer ? 'pause' : day >= MAX ? 'replay' : 'play';
@@ -206,11 +256,62 @@
     // without telling the page: redraw from `day` when that happens.
     window.addEventListener('pageshow', function () { stop(); render(); });
     reset(); build(); render();
-    // Play once by itself the first time the controls come into view.
+
+    /* Wide screens: a vertical time lapse. The panel sticks in view and scrolling moves the
+       days, so the date and the shuffling cards are always on screen together. */
+    var week = $('#week'), track = $('.ff-track'), panel = $('.ff'), NAV = 64, step = 40, scrolly = false;
+    var wide = window.matchMedia('(min-width: 700px)');
+    function heightAt(d) { var keep = day; day = d; render(true); var h = panel.offsetHeight; day = keep; return h; }
+    function layout() {
+      var keep = day;
+      scrolly = !reduce && wide.matches;
+      week.classList.toggle('scrolly', scrolly);
+      panel.style.setProperty('--ff-s', 1); scale = 1;
+      if (scrolly) {
+        // The tallest the board gets: at the start, or once Lost Focus has filled up.
+        var h = Math.max(heightAt(0), heightAt(MAX)), room = window.innerHeight - NAV - 28;
+        scale = Math.min(1, room / h, track.clientWidth / panel.offsetWidth);
+        if (scale < .55) { scrolly = false; scale = 1; week.classList.toggle('scrolly', false); }
+        else {
+          if (timer) stop();
+          step = Math.max(28, window.innerHeight * .07);
+          panel.style.setProperty('--ff-s', scale.toFixed(4));
+          panel.style.setProperty('--ff-top', Math.round(NAV + Math.max(14, (window.innerHeight - NAV - h * scale) / 2)) + 'px');
+          track.style.height = Math.round(h * scale + MAX * step) + 'px';
+          panel.style.marginBottom = -Math.round(h * (1 - scale)) + 'px';   // the space the shrink leaves
+        }
+      }
+      if (!scrolly) { track.style.height = ''; panel.style.marginBottom = ''; }
+      day = keep; render(true);
+      follow();
+    }
+    function follow() {
+      if (!scrolly) return;
+      var top = parseFloat(panel.style.getPropertyValue('--ff-top')) || 0;
+      var prog = (top - track.getBoundingClientRect().top) / (MAX * step);
+      var d = Math.round(Math.max(0, Math.min(1, prog)) * MAX);
+      if (d !== day) setDay(d);
+    }
+    railBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var d = +b.getAttribute('data-day');
+        if (!scrolly) { setDay(d); return; }
+        var top = parseFloat(panel.style.getPropertyValue('--ff-top')) || 0;
+        window.scrollTo({ top: track.getBoundingClientRect().top + window.scrollY - top + d * step + 1, behavior: 'smooth' });
+      });
+    });
+    var following = false;
+    window.addEventListener('scroll', function () {
+      if (scrolly && !following) { following = true; requestAnimationFrame(function () { following = false; follow(); }); }
+    }, { passive: true });
+    window.addEventListener('resize', layout);
+    layout();
+
+    // Elsewhere: play once by itself the first time the controls come into view.
     if (!reduce && 'IntersectionObserver' in window) {
       var played = false;
       var fio = new IntersectionObserver(function (es) {
-        if (es[0].isIntersecting && !played) { played = true; fio.disconnect(); setTimeout(function () { if (!timer && day === 0) play(); }, 700); }
+        if (es[0].isIntersecting && !played) { played = true; fio.disconnect(); setTimeout(function () { if (!scrolly && !timer && day === 0) play(); }, 700); }
       }, { threshold: 0.6 });
       fio.observe($('.ff-controls'));
     }

@@ -50,21 +50,12 @@
     <div class="room"></div>
     <div class="lampglow"></div>
     <div class="desk"></div>
-    <div class="clutter">
-      <span class="scrap paper" style="--x:5%;--y:76%;--dx:34vw;--dy:-6vh;--r:-9deg"><b>Q3 final v7.docx</b></span>
-      <span class="scrap paper" style="--x:17%;--y:84%;--dx:24vw;--dy:-14vh;--r:6deg"><b>budget_FINAL_2.xlsx</b></span>
-      <span class="scrap note" style="--x:2%;--y:90%;--dx:36vw;--dy:-18vh;--r:-5deg">where did I save it??</span>
-      <span class="scrap folder" style="--x:79%;--y:80%;--dx:-10vw;--dy:-12vh;--r:4deg"><b>old stuff</b></span>
-      <span class="scrap paper" style="--x:90%;--y:74%;--dx:-34vw;--dy:-6vh;--r:8deg"><b>link?</b></span>
-      <span class="scrap note blue" style="--x:84%;--y:90%;--dx:-30vw;--dy:-16vh;--r:-7deg">which app?</span>
-      <span class="scrap mug" style="--x:70%;--y:88%;--dx:-22vw;--dy:-14vh;--r:0deg"></span>
-    </div>
   </div>
   <div class="wrap hero-copy">
     <img class="hero-icon" src="/assets/icons/urdesk.png" alt="" width="132" height="132">
     <p class="dateline">For Mac &middot; in testing</p>
     <h1>Everything you're working on,<br><em>one click away.</em></h1>
-    <p class="lede">UrDesk keeps the files and links you’re working on right in front of you, so you stop searching, digging through folders, or opening five apps to find them. They glow when they need you, and the ones you’ve stopped using quietly move aside.</p>
+    <p class="lede">UrDesk keeps the files and links you’re working on right in front of you. They glow when they need you, and the ones you’ve stopped using quietly move aside.</p>
     <div class="cta-row">
       <a class="btn amber" href="#get">Request early access</a>
       <a class="btn ghost" href="#watch">&#9654;&#xFE0E; Watch it work</a>
@@ -74,9 +65,26 @@
   <div class="wrap hero-shot">
     <figure class="deskshot" id="deskshot">
       <img src="/urdesk/media/board-dark.png" width="1800" height="1294" alt="The UrDesk window: sections called This Week, Northwind Outfitters, Home &amp; Family, Learning and Lost Focus, each holding cards for files and links. Two cards glow amber.">
-      <span class="lamp" style="--x:22.45%;--y:32.11%"></span>
-      <span class="lamp" style="--x:24.43%;--y:82.84%"></span>
+      <span class="lamp" style="--x:1.39%;--y:14.14%;--w:13.28%;--h:8.5%"></span>
+      <span class="lamp" style="--x:1.39%;--y:49.23%;--w:13.28%;--h:7.19%"></span>
     </figure>
+  </div>
+  <!-- The scramble: each scrap flies into the screen and lands on the card it becomes (data-to = card centre, % of the board picture). -->
+  <div class="clutter" aria-hidden="true">
+    <span class="scrap chip extra" data-to="8,35.9" style="--x:3%;--y:63%;--r:-3deg">github.com/&hellip;/issues/412</span>
+    <span class="scrap chip cal extra" data-to="22,35.9" style="--x:80%;--y:62%;--r:4deg">Standup moved to 3:15?</span>
+    <span class="scrap paper" data-to="8,18.4" style="--x:3%;--y:70%;--r:-9deg"><b>Q3 final v7.docx</b></span>
+    <span class="scrap paper" data-to="50,52.9" style="--x:15%;--y:78%;--r:6deg"><b>budget_FINAL_2.xlsx</b></span>
+    <span class="scrap note" data-to="50,35.9" style="--x:1%;--y:86%;--r:-5deg">where did I save it??</span>
+    <span class="scrap stack extra" data-to="22,52.9" style="--x:25%;--y:87%;--r:3deg"><b>Downloads (412)</b></span>
+    <span class="scrap paper pdf extra" data-to="8,87.8" style="--x:35%;--y:90%;--r:-7deg"><b>Final_FINAL(2).pdf</b></span>
+    <span class="scrap note green extra" data-to="22,70.3" style="--x:47%;--y:93%;--r:4deg">learn Portuguese!!</span>
+    <span class="scrap paper extra" data-to="64,52.9" style="--x:57%;--y:91%;--r:8deg"><b>IMG_4471.HEIC</b></span>
+    <span class="scrap mug" style="--x:67%;--y:87%;--r:0deg"></span>
+    <span class="scrap folder" data-to="22,87.8" style="--x:76%;--y:77%;--r:4deg"><b>old stuff</b></span>
+    <span class="scrap paper" data-to="36,35.9" style="--x:90%;--y:68%;--r:8deg"><b>link?</b></span>
+    <span class="scrap note blue" data-to="36,18.4" style="--x:85%;--y:87%;--r:-7deg">which app?</span>
+    <span class="scrap paper extra" data-to="8,70.3" style="--x:93%;--y:85%;--r:-4deg"><b>notes (copy).txt</b></span>
   </div>
  </div>
 </header>
@@ -89,8 +97,10 @@
     <div class="sec-head reveal">
       <p class="dateline">Try it &middot; Lost Focus</p>
       <h2>Fast-forward the week.<br>Watch the board tidy itself.</h2>
-      <p class="lede">Press play, or drag the days forward. Cards you haven't opened in 10 days slip into Lost Focus. Glowing and pinned cards stay put. Click any card to open it, and it's back in play.</p>
+      <p class="lede"><span class="if-scroll">Keep scrolling to move three weeks ahead.</span><span class="if-play">Press play, or drag the days forward.</span> Cards you haven't opened in 10 days slip into Lost Focus. Glowing and pinned cards stay put. Click any card to open it, and it's back in play.</p>
     </div>
+    <!-- On wide screens the panel stays put while scrolling moves the days (dc.js sets the height). -->
+    <div class="ff-track">
     <div class="ff reveal">
       <div class="ff-controls">
         <div class="ff-day" aria-live="polite"><b id="ffDay">Today</b><span id="ffDate">Tuesday, October 13</span></div>
@@ -98,10 +108,19 @@
         <input type="range" id="ffRange" min="0" max="21" step="1" value="0" autocomplete="off">
         <div class="ff-scale" aria-hidden="true"><span>Today</span><span>+1 week</span><span>+2 weeks</span><span>+3 weeks</span></div>
         <button class="btn amber small ff-play" type="button" id="ffPlay" aria-label="Play the next three weeks"><span class="ico" aria-hidden="true">&#9654;&#xFE0E;</span> <span class="lbl">Play</span></button>
+        <div class="ff-rail" id="ffRail">
+          <span class="fill"></span><span class="knob"></span>
+          <button type="button" data-day="0">Today</button>
+          <button type="button" data-day="7">+1 week</button>
+          <button type="button" class="mark" data-day="10">Day 10 &middot; Lost Focus</button>
+          <button type="button" data-day="14">+2 weeks</button>
+          <button type="button" data-day="21">+3 weeks</button>
+        </div>
       </div>
       <div class="board" id="ffBoard" aria-label="Example dashboard"></div>
-      <p class="fine">An example board. In the app, 10 days is the default, and you can change it, or switch Lost Focus off. Cards leave Lost Focus after a further 35 days.</p>
     </div>
+    </div>
+    <p class="fine">An example board. In the app, 10 days is the default, and you can change it, or switch Lost Focus off. Cards leave Lost Focus after a further 35 days.</p>
   </div>
 </section>
 

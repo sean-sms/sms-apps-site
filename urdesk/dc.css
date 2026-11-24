@@ -101,31 +101,67 @@ em { font-style: normal; }
   background: radial-gradient(circle, rgba(255, 190, 100, .55) 0%, rgba(255, 160, 70, .22) 35%, rgba(255, 150, 60, 0) 68%);
   opacity: calc(.35 + var(--p) * .65); }
 /* The desk: a warm dark surface along the bottom, with a bright front edge. */
-.desk { position: absolute; left: 0; right: 0; bottom: 0; height: 26%;
-  background: linear-gradient(180deg, #5a3f58 0%, #3c2a47 22%, #281c35 100%);
+.desk { position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
+  background: linear-gradient(180deg, #5a3f58 0%, #3c2a47 18%, #281c35 100%);
   box-shadow: inset 0 3px 0 rgba(255, 200, 140, .35), 0 -30px 60px rgba(255, 170, 80, calc(.1 + var(--p) * .12)); }
 .desk::before { content: ""; position: absolute; inset: 0; opacity: .25;
   background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 90px); }
-/* Scattered files, links and notes: the "scramble". They drift together and fade as the one screen lights up. */
-.clutter { position: absolute; inset: 0; }
-.scrap { position: absolute; left: var(--x); top: var(--y); display: block;
-  transform: translate(calc(var(--dx) * var(--p)), calc(var(--dy) * var(--p))) rotate(calc(var(--r) * (1 - var(--p)))) scale(calc(1 - var(--p) * .45));
-  opacity: calc(1 - var(--p) * 1.7); box-shadow: 0 10px 22px rgba(8, 6, 30, .45); }
-.scrap b { position: absolute; left: 10px; right: 8px; top: 10px; font: 600 11px/1.2 var(--mono); color: #4b4f9a; }
-.paper { width: clamp(74px, 9vw, 130px); aspect-ratio: .78; border-radius: 4px; background:
+/* Scattered files, links and notes: the "scramble". As you scroll, dc.js flies each one into
+   the screen onto the card it becomes, and it fades into that card. Without scripts they just lie there. */
+.clutter { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.scrap { position: absolute; left: var(--x); top: var(--y); display: block; opacity: var(--o, 1);
+  transform: rotate(var(--r)); transform-origin: 50% 50%; will-change: transform, opacity;
+  box-shadow: 0 10px 22px rgba(8, 6, 30, .45); }
+.scrap b { position: absolute; left: 10px; right: 8px; top: 10px; font: 600 11px/1.2 var(--mono); color: #4b4f9a; overflow-wrap: anywhere; }
+.paper { width: clamp(74px, 8.5vw, 124px); aspect-ratio: .78; border-radius: 4px; background:
   repeating-linear-gradient(180deg, transparent 0 14px, rgba(75, 79, 154, .22) 14px 15px) 0 34px / 100% calc(100% - 44px) no-repeat, #f4f1ea; }
-.note { width: clamp(70px, 8vw, 112px); aspect-ratio: 1; padding: 12px 10px; background: #ffe27a; border-radius: 2px;
+.paper.pdf { background: linear-gradient(#d94b3d, #d94b3d) 0 0 / 100% 7px no-repeat,
+  repeating-linear-gradient(180deg, transparent 0 14px, rgba(0, 0, 0, .12) 14px 15px) 0 40px / 100% calc(100% - 50px) no-repeat, #fbfaf7; }
+.paper.pdf b { color: #8a2c22; top: 16px; }
+.note { width: clamp(70px, 7.5vw, 108px); aspect-ratio: 1; padding: 12px 10px; background: #ffe27a; border-radius: 2px;
   font: 600 13px/1.25 "Bradley Hand", "Segoe Print", cursive; color: #5a4300; }
 .note.blue { background: #8fc7ff; color: #12315a; }
-.folder { width: clamp(90px, 11vw, 150px); aspect-ratio: 1.3; border-radius: 4px 10px 6px 6px; background: linear-gradient(180deg, #e8c27a, #d3a45a); }
+.note.green { background: #b4ec9a; color: #24461a; }
+.folder { width: clamp(90px, 10vw, 146px); aspect-ratio: 1.3; border-radius: 4px 10px 6px 6px; background: linear-gradient(180deg, #e8c27a, #d3a45a); }
 .folder::before { content: ""; position: absolute; left: 0; top: -9px; width: 44%; height: 12px; border-radius: 6px 6px 0 0; background: #d3a45a; }
 .folder b { color: #6b4a14; top: 30%; }
 .mug { width: clamp(34px, 4vw, 54px); aspect-ratio: .9; border-radius: 4px 4px 14px 14px; background: linear-gradient(180deg, #f4efe6, #cfc7ba); }
 .mug::after { content: ""; position: absolute; right: -11px; top: 22%; width: 14px; height: 40%; border: 4px solid #cfc7ba; border-left: 0; border-radius: 0 12px 12px 0; }
+/* A browser's tab strip, crowded. */
+.tabs { width: clamp(150px, 15vw, 210px); height: 46px; border-radius: 8px 8px 4px 4px; background: #2a2d3e; padding: 6px 6px 0; display: flex; gap: 3px; }
+.tabs i { flex: 1; height: 14px; border-radius: 4px 4px 0 0; background: #474b63; }
+.tabs i:first-child { background: #6a6f8c; }
+.tabs b { top: auto; bottom: 7px; left: 10px; color: #c9cce0; }
+/* An email notification. */
+.mail { width: clamp(140px, 14vw, 196px); padding: 9px 12px; border-radius: 12px; background: rgba(246, 246, 250, .96);
+  font: 600 12px/1.3 -apple-system, system-ui, sans-serif; color: #1d1f2e; }
+.mail small { display: block; font-weight: 500; font-size: 10px; color: #6a6d80; margin-bottom: 2px; }
+.mail b { position: static; font: inherit; color: inherit; }
+/* A screenshot thumbnail with its long default name. */
+.shot { width: clamp(110px, 11vw, 156px); padding: 5px 5px 34px; border-radius: 5px; background: #f2f2f5; }
+.shot span { display: block; aspect-ratio: 1.6; border-radius: 2px; background: linear-gradient(135deg, #3b4a8f, #6c5aa8 55%, #e0a35a); }
+.shot b { top: auto; bottom: 5px; left: 6px; right: 6px; font-size: 9px; color: #3a3d55; }
+/* A Finder window full of untitled folders. */
+.finder { width: clamp(120px, 12vw, 170px); padding: 24px 10px 10px; border-radius: 9px; background: #ececf1;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.finder::before { content: ""; position: absolute; left: 9px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: #ff5f57; box-shadow: 11px 0 #febc2e, 22px 0 #28c840; }
+.finder small { position: absolute; left: 44px; top: 5px; font: 600 10px/1.3 -apple-system, system-ui, sans-serif; color: #55586b; }
+.finder i { aspect-ratio: 1.3; border-radius: 2px 4px 3px 3px; background: linear-gradient(180deg, #8cc4f5, #5a9fe0); }
+/* A pasted link and a calendar change, as pills. */
+.chip { padding: 8px 13px 8px 30px; border-radius: 999px; background: #f4f1ea; white-space: nowrap;
+  font: 600 12px/1 var(--mono); color: #3b3f86; }
+.chip::before { content: "\1F517"; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 12px; }
+.chip.cal { background: #fff; color: #1d1f2e; font-family: -apple-system, system-ui, sans-serif; }
+.chip.cal::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: #e5484d; }
+/* A pile of downloads. */
+.stack { width: clamp(80px, 8.5vw, 120px); aspect-ratio: .78; border-radius: 4px; background: #f4f1ea;
+  box-shadow: 5px -5px 0 #e2ded3, 10px -10px 0 #d2cdc0, 0 10px 22px rgba(8, 6, 30, .45); }
+/* Phones: fewer scraps, kept low so the buttons and checklist stay clear. */
+@media (max-width: 700px) { .scrap.extra { display: none; } .scrap { top: max(var(--y), 86%); } .desk { height: 24%; } }
 
-.hero-copy { position: relative; z-index: 2; text-align: center; padding-top: clamp(92px, 13vh, 130px);
+.hero-copy { position: relative; z-index: 3; text-align: center; padding-top: clamp(84px, 11vh, 120px);
   transform: translateY(calc(var(--p) * -34vh)); opacity: calc(1 - var(--p) * 1.9); }
-.hero-icon { margin: 0 auto 16px; width: clamp(88px, 12vh, 132px); height: auto; filter: drop-shadow(0 18px 34px rgba(10, 8, 40, .5)); }
+.hero-icon { margin: 0 auto 14px; width: clamp(64px, 9vh, 108px); height: auto; filter: drop-shadow(0 18px 34px rgba(10, 8, 40, .5)); }
 .hero h1 { text-shadow: 0 4px 30px rgba(20, 16, 60, .35); font-size: clamp(36px, min(6.2vw, 8.4vh), 76px); }
 .hero h1 em { background: linear-gradient(180deg, #ffe1a1, var(--amber) 55%, var(--amber-deep)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero .lede { margin: 0 auto 24px; color: rgba(255, 255, 255, .9); }
@@ -143,13 +179,15 @@ em { font-style: normal; }
 .deskshot { --lit: clamp(0, (var(--p) - .35) * 2.2, 1); --w: min(1080px, 92vw, calc((100vh - 120px) * 1.39));
   position: absolute; left: 50%; width: var(--w); margin: 0;
   --end: max(78px, (100vh - var(--w) / 1.39) / 2 + 20px);
-  top: calc(100vh - (var(--w) / 1.39) * .2 - var(--p) * (100vh - (var(--w) / 1.39) * .2 - var(--end)));
+  /* --start (set by dc.js) puts the screen just under the hero text, showing up to 40% of it. */
+  --start: calc(100vh - (var(--w) / 1.39) * .32);
+  top: calc(var(--start) - var(--p) * (var(--start) - var(--end)));
   transform: translateX(-50%) perspective(1800px) rotateX(calc((1 - var(--p)) * 18deg)) scale(calc(.9 + var(--p) * .1));
   transform-origin: 50% 0; pointer-events: auto; }
 .deskshot img { width: 100%; outline: 12px solid #0d0f1c; outline-offset: 0; border-radius: 6px; background: #000; filter: brightness(calc(.55 + var(--lit) * .45)) saturate(calc(.75 + var(--lit) * .25)); }
 .deskshot::after { content: ""; position: absolute; top: calc(100% + 12px); left: -7%; right: -7%; height: 15px; z-index: -1;
   background: linear-gradient(#d6d9e4, #8e92a8); border-radius: 0 0 20px 20px / 0 0 12px 12px; box-shadow: 0 22px 46px rgba(0, 0, 0, .55); }
-.lamp { position: absolute; left: var(--x); top: var(--y); width: 13.68%; height: 6.58%; border-radius: 9px;
+.lamp { position: absolute; left: var(--x); top: var(--y); width: var(--w, 13.28%); height: var(--h, 8.5%); border-radius: 9px;
   pointer-events: none; opacity: var(--lit);
   box-shadow: 0 0 0 2px rgba(255, 190, 80, .9), 0 0 22px 6px rgba(255, 170, 50, .55), 0 0 70px 20px rgba(255, 160, 40, .25);
   animation: lamp 2.6s ease-in-out infinite; }
@@ -183,6 +221,49 @@ section { padding: clamp(72px, 10vw, 130px) 0; position: relative; }
   .ff-controls input, .ff-scale { grid-column: 1 / -1; }
   #ffPlay { grid-column: 2; grid-row: 1; }
 }
+
+/* Wording for each way of moving time. */
+.week .if-scroll { display: none; }
+.week.scrolly .if-scroll { display: inline; }
+.week.scrolly .if-play { display: none; }
+
+/* Narrow or short screens: the day and slider stay in view while the board scrolls past. */
+.week:not(.scrolly) .ff-controls { position: sticky; top: 64px; z-index: 5; margin: -10px -10px 16px; padding: 10px;
+  border-radius: 16px; background: rgba(24, 27, 62, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.ff-rail { display: none; }
+
+/* Wide screens: a vertical time lapse. The panel stays put, scrolling moves the days down the rail,
+   and the cards shuffle into Lost Focus as you go. dc.js sets --ff-top, --ff-s, --d and the track height. */
+/* The panel is laid out at one fixed size and scaled down as a whole to fit the window (dc.js sets --ff-s),
+   so the whole board, the rail and the date are always on screen together. */
+.week.scrolly .ff-track { margin-inline: calc(50% - 50vw + 24px); overflow-x: clip; }
+.week.scrolly .ff.reveal { width: 1180px; margin-left: calc(50% - 590px); position: sticky; top: var(--ff-top, 80px); display: grid; grid-template-columns: 156px 1fr; gap: 24px;
+  transform: scale(var(--ff-s, 1)); transform-origin: 50% 0; opacity: 1; transition: none; }
+.week.scrolly .ff-controls { display: flex; flex-direction: column; gap: 22px; margin: 0; }
+.week.scrolly #ffRange, .week.scrolly .ff-scale, .week.scrolly #ffPlay { display: none; }
+.week.scrolly .ff-day b { font-size: 34px; white-space: nowrap; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.week.scrolly .ff-day span { display: block; margin-top: 6px; }
+.week.scrolly .ff-rail { display: block; position: relative; flex: 1; min-height: 240px; margin: 8px 0 14px 6px; --d: 0; }
+.ff-rail::before, .ff-rail .fill { content: ""; position: absolute; left: 6px; top: 0; width: 3px; border-radius: 3px; }
+.ff-rail::before { bottom: 0; background: rgba(255, 255, 255, .12); }
+.ff-rail .fill { height: calc(var(--d) * 100%); background: linear-gradient(var(--amber), var(--amber-deep)); }
+.ff-rail .knob { position: absolute; left: 0; top: calc(var(--d) * 100%); width: 15px; height: 15px; margin-top: -7px; border-radius: 50%;
+  background: var(--amber); box-shadow: 0 0 0 4px rgba(255, 180, 70, .22), 0 0 18px rgba(255, 170, 50, .6); }
+.ff-rail button { position: absolute; left: 24px; top: calc(var(--at) * 100%); transform: translateY(-50%); appearance: none; border: 0; background: none;
+  padding: 4px 0; cursor: pointer; text-align: left; white-space: nowrap; font: 600 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--faint); transition: color .2s; }
+.ff-rail button:hover, .ff-rail button.on { color: var(--text); }
+.ff-rail button.mark { color: rgba(255, 190, 90, .6); white-space: normal; max-width: 130px; }
+.ff-rail button.mark.on { color: var(--amber); }
+.week.scrolly .board { grid-template-columns: 1fr 1fr; gap: 12px; align-content: start; }
+.week.scrolly .bsec.lost { grid-column: 1 / -1; }
+.week.scrolly .ff-track + .fine { margin-top: 30px; }
+.week.scrolly .bsec { padding: 10px 12px 12px; }
+.week.scrolly .bsec h3 { font-size: 15px; margin-bottom: 9px; }
+.week.scrolly .bsec .cards { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 8px; min-height: 50px; }
+.week.scrolly .dcard { padding: 8px 10px 8px 10px; }
+.week.scrolly .dcard .nm { margin-right: 38px; }
+.week.scrolly .dcard .mt { grid-column: 1 / -1; white-space: nowrap; overflow: hidden; }
+.week.scrolly .bsec .empty { padding: 12px 4px; }
 
 .board { display: grid; gap: 18px; }
 .bsec { border-radius: 18px; background: rgba(0, 0, 0, .18); border: 1px solid rgba(255, 255, 255, .07); padding: 12px 14px 14px; transition: background .3s; }
@@ -337,5 +418,6 @@ details p { margin: 12px 0 0; color: var(--muted); }
   .hero-shot { position: relative; }
   .deskshot { position: relative; left: auto; top: auto; transform: none; margin: 40px auto 0; }
   .scroll-hint { display: none; }
+  .clutter { display: none; }
   .dcard, .feature { transition: none; }
 }
