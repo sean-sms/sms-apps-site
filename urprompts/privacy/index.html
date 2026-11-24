@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UrPrompts privacy policy</title>
+<meta name="description" content="UrPrompts keeps your prompts as plain files on your Mac. No account, no analytics, no tracking.">
+<link rel="canonical" href="https://sms-apps.com/urprompts/privacy/">
+<link rel="icon" type="image/png" href="/assets/icons/urprompts-64.png">
+<link rel="apple-touch-icon" href="/assets/icons/urprompts-touch.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SMS Apps</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/urprompts/">UrPrompts</a>
+      <a href="/urprompts/support/">Support</a>
+      <a href="/urprompts/privacy/" aria-current="page">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>UrPrompts privacy policy</h1>
+    <p class="updated">UrPrompts, by SMS Apps. Last updated November 23, 2026.</p>
+
+    <p><b>The short version:</b> your prompts are plain files in a folder you choose on your Mac. UrPrompts has no account, no analytics, no advertising and no tracking, and SMS Apps never receives your data. The only connection it ever makes is to a private GitHub repository you set up yourself, if you choose to sync.</p>
+
+    <h2>What UrPrompts stores, and where</h2>
+    <ul>
+      <li><b>Your prompts</b> are Markdown files in the library folder you choose, with their titles, tags, trigger codes and fill-in blanks. You can open, edit, copy or delete them with any app.</li>
+      <li><b>How often you use each prompt</b>, and the values you last typed into its blanks, are kept in a hidden folder inside your library (<code>.promptlib/usage</code>), one file per Mac, so your counts add up across your Macs.</li>
+      <li><b>Access to your library folder</b>, and to Espanso's folder if you install the Espanso file, is remembered with macOS bookmarks, so the app can reopen them after a restart.</li>
+      <li><b>Settings</b> — your library's location, this Mac's name, the sync address and when it last synced — are kept in the app's own private storage on your Mac.</li>
+      <li><b>Your GitHub access token</b>, if you add one, is kept in the macOS Keychain and nowhere else.</li>
+      <li><b>Files you share</b> or export go wherever you choose to save or send them.</li>
+    </ul>
+    <p>None of this is sent to SMS Apps or anyone else. It stays on your Mac until you remove it; <a href="/urprompts/support/#remove">Support</a> explains how.</p>
+
+    <h2>When UrPrompts goes online</h2>
+    <p>Only to sync, and only if you connect a GitHub repository of your own. UrPrompts then talks directly to GitHub (<code>api.github.com</code>) with your token, to read and write the files in that one repository. Before every sync it checks that the repository is private, and it refuses to sync with a public one, so your prompts can't be published by accident. What GitHub keeps is covered by GitHub's own privacy statement.</p>
+    <p>Without a repository connected, UrPrompts makes no network requests at all.</p>
+
+    <h2>Sharing a prompt</h2>
+    <p>When you share, UrPrompts builds the text or file on your Mac and hands it to the app you choose: the clipboard, Mail, AirDrop or a saved file. A shared prompt carries its title, description, tags, trigger code, fill-in blanks and the name you set for sharing. It never includes your use counts, the values you last typed into its blanks, your favorites or where it sits in your folders. Nothing is sent until you send it yourself.</p>
+
+    <h2>Testing through TestFlight</h2>
+    <p>If you test UrPrompts through Apple's TestFlight, Apple may share crash reports and feedback you choose to send, along with basic device details, with SMS Apps. That's covered by Apple's TestFlight terms. We use it only to fix problems.</p>
+
+    <h2>Email</h2>
+    <p>If you write to us, we use your address and message only to reply, and never share them.</p>
+
+    <h2>Children</h2>
+    <p>UrPrompts doesn't collect personal information from anyone, including children.</p>
+
+    <h2>Changes and contact</h2>
+    <p>If this policy changes, the new version will be posted here with a new date. Questions: <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="/">SMS Apps</a>
+      <a href="/urprompts/">UrPrompts</a>
+      <a href="/urprompts/support/">Support</a>
+      <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>
+    </div>
+    <p>&copy; 2026 SMS Apps LLC.</p>
+  </div>
+</footer>
+</body>
+</html>

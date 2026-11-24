@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UrPrompts support</title>
+<meta name="description" content="Help with UrPrompts for Mac: searching, fill-in blanks, sync, Espanso, sharing, and how to reach SMS Apps.">
+<link rel="canonical" href="https://sms-apps.com/urprompts/support/">
+<link rel="icon" type="image/png" href="/assets/icons/urprompts-64.png">
+<link rel="apple-touch-icon" href="/assets/icons/urprompts-touch.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SMS Apps</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/urprompts/">UrPrompts</a>
+      <a href="/urprompts/support/" aria-current="page">Support</a>
+      <a href="/urprompts/privacy/">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>UrPrompts support</h1>
+    <p>Write to <a href="mailto:support@sms-apps.com?subject=UrPrompts">support@sms-apps.com</a> with questions, problems or ideas. Please include your UrPrompts version (UrPrompts → About UrPrompts) and your macOS version. A real person reads every message.</p>
+    <p class="muted">UrPrompts runs on macOS 14 or later.</p>
+
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>How do I find and copy a prompt?</summary>
+      <p>Press ⌘K, type a few letters of its title, tags or trigger code, and press Return. The prompt is copied, ready to paste into any AI app. From another app, ⌥⌘K opens the same search over whatever you're working in.</p>
+    </details>
+
+    <details>
+      <summary>What are fill-in blanks?</summary>
+      <p>Write <code>{audience}</code> anywhere in a prompt. When you copy it, UrPrompts asks for each blank and remembers what you typed last time. Add a note after a bar to explain a blank: <code>{audience | who the piece is for}</code>.</p>
+    </details>
+
+    <details>
+      <summary>How do I sync between Macs?</summary>
+      <p>Create an empty private repository on GitHub and a fine-grained token for it, then add both in Settings (⌘,). The <a href="/urprompts/sync/">step-by-step sync guide</a> walks through it. UrPrompts refuses to sync with a public repository.</p>
+    </details>
+
+    <details>
+      <summary>What happens if two Macs change the same prompt?</summary>
+      <p>Neither version is lost and the two are never blended. The Mac that syncs keeps its version; the other one is saved beside it, and Conflicts in the sidebar lets you keep either one, or both as separate prompts.</p>
+    </details>
+
+    <details>
+      <summary>Can I use trigger codes in any app?</summary>
+      <p>Yes, with Espanso, a free text expander. Choose Library → Install Espanso File. The first time, UrPrompts asks you to choose Espanso's <code>match</code> folder (usually ~/Library/Application Support/espanso/match) and then keeps the file there up to date. Type <code>;</code> and a trigger code in any app to expand the prompt.</p>
+    </details>
+
+    <details>
+      <summary>Can I edit prompts in another app?</summary>
+      <p>Yes. Each prompt is a Markdown file in your library folder, so Obsidian or any text editor can open it. UrPrompts reloads when you switch back to it; press ⌘R to reload by hand.</p>
+    </details>
+
+    <details>
+      <summary>How do I share a prompt?</summary>
+      <p>Select it and choose Share… (⌥⌘S). Copy for Chat and Copy as Email work in any app. For another UrPrompts user, send a <code>.urprompts</code> file: they double-click it and see what's in it before anything is added.</p>
+    </details>
+
+    <h2 id="remove">Removing UrPrompts and its data</h2>
+    <p>Your prompts are yours: they stay in your library folder until you delete them. To remove the app's own data too, quit UrPrompts, then in Finder choose Go → Go to Folder… and move this to the Trash:</p>
+    <ul>
+      <li><code>~/Library/Containers/com.urprompts.app</code> — settings and sync status (the App Store version)</li>
+      <li><code>~/Library/Application Support/PromptLibrary</code> — the same, for the version downloaded from this site</li>
+    </ul>
+    <p>If you added a GitHub token, open Keychain Access and delete the item named <code>com.promptlibrary.github</code>. Use counts live in the <code>.promptlib</code> folder inside your library.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="/">SMS Apps</a>
+      <a href="/urprompts/">UrPrompts</a>
+      <a href="/urprompts/privacy/">Privacy</a>
+      <a href="mailto:support@sms-apps.com">support@sms-apps.com</a>
+    </div>
+    <p>&copy; 2026 SMS Apps LLC.</p>
+  </div>
+</footer>
+</body>
+</html>
